@@ -16,7 +16,7 @@ class NavbarComponent extends Component {
             to='/'
             className='navbar-brand'
           >
-            <span>{"<Klevin />"}</span>
+            {"<Klevin />"}
           </Link>
         </div>
         <div>
