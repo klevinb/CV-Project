@@ -1,0 +1,33 @@
+body {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.8)
+    ),
+    url("https://truetech-v4.s3.amazonaws.com/uploads/article/image/12/christopher-gower-291246.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+.navbar * {
+  font-size: 30px;
+  color: #474747;
+  font-weight: bold;
+}
+
+.nav-link {
+  color: #474747 !important;
+}
+
+.nav-link:hover {
+  color: black !important;
+  border-bottom: 3px groove black;
+}
+
+.navbar {
+  background-color: transparent !important;
+}
+
+.clicked {
+  border-bottom: 3px groove #474747;
+}
