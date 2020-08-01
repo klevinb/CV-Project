@@ -63,11 +63,6 @@
   color: black;
 }
 
-.nav-bar1 {
-  background-color: red;
-  height: 90vh;
-}
-
 .userInfo img {
   width: 35px;
   height: 35px;
@@ -100,4 +95,63 @@
 
 .footer svg {
   font-size: 20px;
+}
+
+.musicControls svg {
+  font-size: 1.2rem;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.playbtn svg {
+  font-size: 2rem;
+}
+
+.progressb {
+  width: 100%;
+}
+
+#prgbar {
+  width: 80%;
+}
+
+#volBar {
+  width: 30%;
+  margin-left: 10px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  background-color: transparent;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 300px;
+  height: 5px;
+  background: #ddd;
+  border: none;
+  border-radius: 3px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: whitesmoke;
+  margin-top: -5px;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+
+.nav-bar1 {
+  background-color: red;
+  height: 90vh;
 }
