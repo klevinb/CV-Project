@@ -1,0 +1,103 @@
+.nav-bar {
+  background-color: rgba(0, 0, 0, 0.856);
+  height: 90vh;
+  color: lightgrey;
+}
+
+.nav-bar img {
+  height: 100%;
+  width: 70%;
+}
+
+.nav-bar ul {
+  list-style: none;
+  padding: 0;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.nav-bar li a {
+  color: lightgrey;
+}
+
+.nav-bar li a {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.nav-bar ul svg {
+  color: lightgrey;
+  font-size: 1.3rem;
+  margin-right: 0.8em;
+}
+
+.nav-bar li:hover a,
+.nav-bar li:hover svg {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.nav-bar hr {
+  background-color: lightgrey;
+  margin: 0;
+}
+
+.buttons {
+  background-color: transparent;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  border: 2px solid whitesmoke;
+  font-weight: bold;
+}
+
+.buttons:hover {
+  border: 2px solid whitesmoke;
+  background-color: white;
+  color: black;
+}
+.buttons:focus {
+  border: 2px solid whitesmoke;
+  background-color: white;
+  color: black;
+}
+
+.nav-bar1 {
+  background-color: red;
+  height: 90vh;
+}
+
+.userInfo img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.userInfo {
+  color: whitesmoke;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.userInfo .row svg {
+  color: lightgrey !important;
+  font-size: 1.3rem;
+  margin-right: 0.8em;
+}
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.76);
+  height: 10vh;
+  color: whitesmoke;
+  display: flex;
+  align-items: center;
+}
+
+.footer img {
+  width: 60px;
+  height: 50px;
+}
+
+.footer svg {
+  font-size: 20px;
+}
