@@ -5,10 +5,11 @@ import { AiOutlineHome, AiFillHome } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 import { GiBookshelf } from "react-icons/gi";
 import { RiDownloadLine } from "react-icons/ri";
+import { withRouter } from "react-router-dom";
 
 class NavigationBar extends Component {
   state = {
-    loggedin: true,
+    loggedin: false,
   };
   render() {
     return (
@@ -19,11 +20,11 @@ class NavigationBar extends Component {
         >
           <div className='d-flex justify-content-center flex-column m-2 mt-3'>
             <Link to='/'>
-              <Image fluid src='spotify_navigation_logo.png' alt='nav-logo' />
+              <Image fluid src='/spotify_navigation_logo.png' alt='nav-logo' />
             </Link>
             <ul className='mt-3'>
               <li>
-                <Link to='/'>
+                <Link to='/home'>
                   <AiOutlineHome />
                   Home
                 </Link>
@@ -68,8 +69,18 @@ class NavigationBar extends Component {
               </>
             ) : (
               <>
-                <Button className='buttons'>SIGN UP</Button>
-                <Button className='buttons'>LOG IN</Button>
+                <Button
+                  className='buttons'
+                  onClick={() => this.props.history.push("/login")}
+                >
+                  SIGN UP
+                </Button>
+                <Button
+                  className='buttons'
+                  onClick={() => this.props.history.push("/login")}
+                >
+                  LOG IN
+                </Button>
               </>
             )}
           </div>
@@ -79,4 +90,4 @@ class NavigationBar extends Component {
   }
 }
 
-export default NavigationBar;
+export default withRouter(NavigationBar);

@@ -5,14 +5,16 @@ import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./components/MainCss.css";
-import Register from "./components/Register";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import configureStore from "./store";
 
 ReactDOM.render(
   // <React.StrictMode>
   <Router>
-    <Route path='/' exact component={App} />
-    <Route path='/login' exact component={Register} />
+    <Provider store={configureStore()}>
+      <App />
+    </Provider>
   </Router>,
   // </React.StrictMode>,
   document.getElementById("root")

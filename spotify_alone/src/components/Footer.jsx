@@ -15,8 +15,19 @@ import {
   MdVolumeOff,
 } from "react-icons/md";
 import { TiArrowShuffle } from "react-icons/ti";
-import {} from "react-icons/fi";
-import {} from "react-icons";
+import { connect } from "react-redux";
+import { selectSongThunk } from "../utilitis";
+
+const mapStateToProps = (state) => state;
+
+const mapDispatchToProps = (dispatch) => ({
+  selectSong: (id) => dispatch(selectSongThunk(id)),
+  likeSong: (id) =>
+    dispatch({
+      type: "LIKE_SONG",
+      payload: id,
+    }),
+});
 
 class Footer extends Component {
   constructor(props) {
@@ -25,6 +36,7 @@ class Footer extends Component {
       statevolum: 1,
       dur: 0,
       currentTime: 0,
+      muted: false,
     };
     this.audio = React.createRef("audio_tag");
   }
@@ -46,10 +58,12 @@ class Footer extends Component {
   };
 
   mute = () => {
-    if (this.audio.current.muted) {
+    if (this.state.muted) {
       this.audio.current.muted = false;
+      this.setState({ muted: false });
     } else {
       this.audio.current.muted = true;
+      this.setState({ muted: true });
     }
   };
 
@@ -58,6 +72,10 @@ class Footer extends Component {
   };
 
   handleVolume = (q) => {
+    if (this.state.muted === true) {
+      this.audio.current.muted = false;
+      this.setState({ muted: false });
+    }
     this.setStateVolum(q);
     this.audio.current.volume = q;
   };
@@ -75,18 +93,69 @@ class Footer extends Component {
     this.setCurrentTime(compute);
     this.audio.current.currentTime = compute;
   };
+
+  playNext = () => {
+    const findIndex = this.props.tracksList.indexOf(this.props.selectedSong[0]);
+    if (findIndex !== this.props.tracksList.length - 1) {
+      const findNext = this.props.tracksList.slice(
+        findIndex + 1,
+        findIndex + 2
+      );
+
+      const findId = this.props.tracksList.find(
+        (track) => track.preview === findNext[0].preview
+      );
+
+      this.props.selectSong(findId.id);
+    }
+  };
+  playPrevious = () => {
+    const findIndex = this.props.tracksList.indexOf(this.props.selectedSong[0]);
+    if (findIndex !== 0) {
+      const findNext = this.props.tracksList.slice(findIndex - 1, findIndex);
+      const findId = this.props.tracksList.find(
+        (track) => track.preview === findNext[0].preview
+      );
+
+      this.props.selectSong(findId.id);
+    }
+  };
+
   render() {
     return (
       <>
-        <Col className='d-flex pl-1' md={3}>
+        <Col className='d-flex pl-2' md={3}>
           <Image src='https://cdn.cnn.com/cnnnext/dam/assets/200117021516-02-eminem-new-album-super-tease.jpg' />
 
           <Col className='d-flex flex-column' sm={12} md={6}>
-            <span>Song title</span>
-            <span>Singer</span>
+            <span>
+              {this.props.selectedSong &&
+                this.props.selectedSong[0].title_short}
+            </span>
+            <span style={{ color: "#969696" }}>
+              {this.props.selectedSong &&
+                this.props.selectedSong[0].artist.name}
+            </span>
           </Col>
           <div className='d-flex align-items-center'>
-            <AiOutlineHeart className='mr-3' />
+            {this.props.likedSongs &&
+            this.props.likedSongs.indexOf(
+              this.props.selectedSong && this.props.selectedSong[0].id
+            ) !== -1 ? (
+              <AiFillHeart
+                onClick={() =>
+                  this.props.likeSong(this.props.selectedSong[0].id)
+                }
+              />
+            ) : (
+              <AiOutlineHeart
+                onClick={
+                  this.props.selectedSong !== null
+                    ? () => this.props.likeSong(this.props.selectedSong[0].id)
+                    : () => {}
+                }
+              />
+            )}
             <GoScreenFull />
           </div>
         </Col>
@@ -96,22 +165,25 @@ class Footer extends Component {
               <TiArrowShuffle />
             </span>
             <span>
-              <MdSkipPrevious />
+              <MdSkipPrevious onClick={this.playPrevious} />
             </span>
-            <span
-              className='playbtn'
-              onClick={() => {
-                this.togglePlaying();
-              }}
-            >
+            <span className='playbtn'>
               {this.audio.current && this.audio.current.paused ? (
-                <AiOutlinePlayCircle />
+                <AiOutlinePlayCircle
+                  onClick={() => {
+                    this.togglePlaying();
+                  }}
+                />
               ) : (
-                <AiOutlinePauseCircle />
+                <AiOutlinePauseCircle
+                  onClick={() => {
+                    this.togglePlaying();
+                  }}
+                />
               )}
             </span>
             <span>
-              <MdSkipNext />
+              <MdSkipNext onClick={this.playNext} />
             </span>
             <span>
               <MdRepeat />
@@ -123,7 +195,8 @@ class Footer extends Component {
             ref={this.audio}
             type='audio/mpeg'
             preload='true'
-            src='https://cdns-preview-e.dzcdn.net/stream/c-e711907683c737c6e3151208763b9b26-8.mp3'
+            autoPlay='true'
+            src={this.props.selectedSong && this.props.selectedSong[0].preview}
           />
 
           <div className='progressb d-flex justify-content-center'>
@@ -147,11 +220,7 @@ class Footer extends Component {
         </Col>
         <Col className='d-flex justify-content-end align-items-center' md={3}>
           <span className='volum' onClick={() => this.mute()}>
-            {this.audio.current && this.audio.current.muted ? (
-              <MdVolumeOff />
-            ) : (
-              <MdVolumeUp />
-            )}
+            {this.audio && this.state.muted ? <MdVolumeOff /> : <MdVolumeUp />}
           </span>
           <input
             value={Math.round(this.state.statevolum * 100)}
@@ -166,4 +235,4 @@ class Footer extends Component {
   }
 }
 
-export default Footer;
+export default connect(mapStateToProps, mapDispatchToProps)(Footer);

@@ -6,28 +6,30 @@ import AlbumPage from "./AlbumPage";
 import ArtistPage from "./ArtistPage";
 import HomePage from "./HomePage";
 import SearchPage from "./SearchPage";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { withRouter, Route } from "react-router-dom";
 
 class App extends React.Component {
   state = {};
   render() {
     return (
       <>
-        <Router>
-          <Row className='m-0'>
+        {this.props.location.pathname !== "/login" && (
+          <Row className='m-0 app'>
             <NavigationBar />
-            <Route path='/' exact component={HomePage} />
+            <Route path='/home' exact component={HomePage} />
             <Route path='/artist' exact component={ArtistPage} />
-            <Route path='/album' exact component={AlbumPage} />
+            <Route path='/album/:id' exact component={AlbumPage} />
             <Route path='/search' exact component={SearchPage} />
           </Row>
+        )}
+        {this.props.location.pathname !== "/login" && (
           <Row className='m-0 footer'>
             <Footer />
           </Row>
-        </Router>
+        )}
       </>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
