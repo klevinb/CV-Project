@@ -64,7 +64,6 @@ export const selectSongThunk = (id) => {
 };
 
 export const fetchArtistInfos = (id) => {
-  console.log(id);
   return (dispatch, getState) => {
     let artist = [];
     Promise.all([
@@ -93,13 +92,11 @@ export const fetchArtistInfos = (id) => {
       )
         .then((res) => res.json())
         .then((respObj) => artist.push(respObj)),
-    ])
-      .then(() => console.log(artist))
-      .then(() =>
-        dispatch({
-          type: "FETCH_ARTIST",
-          payload: { artist: artist[0], topSongs: artist[1] },
-        })
-      );
+    ]).then(() =>
+      dispatch({
+        type: "FETCH_ARTIST",
+        payload: { artist: artist[0], topSongs: artist[1] },
+      })
+    );
   };
 };

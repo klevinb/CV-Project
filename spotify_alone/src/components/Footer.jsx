@@ -121,16 +121,30 @@ class Footer extends Component {
     }
   };
 
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return nextProps.selectedSong !== this.props.selectedSong;
+  // }
+
   render() {
     return (
       <>
         <Col className='d-flex pl-2' md={3}>
-          <Image src='https://cdn.cnn.com/cnnnext/dam/assets/200117021516-02-eminem-new-album-super-tease.jpg' />
+          {this.props.selectedSong ? (
+            <Image src={this.props.selectedSong[0].album.cover_xl} />
+          ) : (
+            <Image
+              src={this.props.albumInfo && this.props.albumInfo.cover_big}
+            />
+          )}
 
           <Col className='d-flex flex-column' sm={12} md={6}>
+            {console.log("HERE")}
             <span>
-              {this.props.selectedSong &&
-                this.props.selectedSong[0].title_short}
+              {this.props.selectedSong ? (
+                this.props.selectedSong[0].title_short
+              ) : (
+                <p>Select a song</p>
+              )}
             </span>
             <span style={{ color: "#969696" }}>
               {this.props.selectedSong &&
@@ -165,7 +179,7 @@ class Footer extends Component {
               <TiArrowShuffle />
             </span>
             <span>
-              <MdSkipPrevious onClick={this.playPrevious} />
+              <MdSkipPrevious onClick={() => this.playPrevious()} />
             </span>
             <span className='playbtn'>
               {this.audio.current && this.audio.current.paused ? (
@@ -183,7 +197,7 @@ class Footer extends Component {
               )}
             </span>
             <span>
-              <MdSkipNext onClick={this.playNext} />
+              <MdSkipNext onClick={() => this.playNext()} />
             </span>
             <span>
               <MdRepeat />
@@ -219,7 +233,7 @@ class Footer extends Component {
           </div>
         </Col>
         <Col className='d-flex justify-content-end align-items-center' md={3}>
-          <span className='volum' onClick={() => this.mute()}>
+          <span className='volum' onClick={this.mute}>
             {this.audio && this.state.muted ? <MdVolumeOff /> : <MdVolumeUp />}
           </span>
           <input

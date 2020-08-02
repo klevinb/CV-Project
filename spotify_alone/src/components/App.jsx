@@ -17,7 +17,7 @@ class App extends React.Component {
           <Row className='m-0 app'>
             <NavigationBar />
             <Route path='/home' exact component={HomePage} />
-            <Route path='/artist' exact component={ArtistPage} />
+            <Route path='/artist/:id' exact component={ArtistPage} />
             <Route path='/album/:id' exact component={AlbumPage} />
             <Route path='/search' exact component={SearchPage} />
           </Row>
