@@ -121,15 +121,22 @@ class Footer extends Component {
     }
   };
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return nextProps.selectedSong !== this.props.selectedSong;
-  // }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.selectedSong !== this.props.selectedSong) {
+      return true;
+    } else if (nextState !== this.state) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   render() {
     return (
       <>
         <Col className='d-flex pl-2' md={3}>
-          {this.props.selectedSong ? (
+          {this.props.selectedSong &&
+          this.props.selectedSong[0].contributors ? (
             <Image src={this.props.selectedSong[0].album.cover_xl} />
           ) : (
             <Image
@@ -138,7 +145,6 @@ class Footer extends Component {
           )}
 
           <Col className='d-flex flex-column' sm={12} md={6}>
-            {console.log("HERE")}
             <span>
               {this.props.selectedSong ? (
                 this.props.selectedSong[0].title_short

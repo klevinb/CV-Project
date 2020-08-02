@@ -34,7 +34,7 @@ class ArtistPage extends Component {
                   <p></p>
                   <h4 id='label1'>
                     {this.props.artistInfo.artist.name}
-                    {" Top 50"}
+                    {" - Top 50"}
                   </h4>
                   <Button className='play'>PLAY</Button>
                   <Link to={"/artistdetails/"}>
