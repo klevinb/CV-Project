@@ -16,10 +16,10 @@ class App extends React.Component {
         {this.props.location.pathname !== "/login" && (
           <Row className='m-0 app'>
             <NavigationBar />
-            <Route path='/home' exact component={HomePage} />
-            <Route path='/artist/:id' exact component={ArtistPage} />
-            <Route path='/album/:id' exact component={AlbumPage} />
-            <Route path='/search' exact component={SearchPage} />
+            <Route path='/home' component={HomePage} />
+            <Route path='/artist/:id' component={ArtistPage} />
+            <Route path='/album/:id'  component={AlbumPage} />
+            <Route path='/search' component={SearchPage} />
           </Row>
         )}
         {this.props.location.pathname !== "/login" && (
