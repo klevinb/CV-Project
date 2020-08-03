@@ -1,55 +1,42 @@
-import React, { Component } from "react";
+import React from "react";
 import { RiMusicLine } from "react-icons/ri";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => state;
 
-class Song extends Component {
-  state = {
-    durr: 0,
+function Song(props) {
+  const fmtMSS = (s) => {
+    return (s - (s %= 60)) / 60 + (9 < s ? ":" : ":0") + ~~s;
   };
 
-  fmtMSS = (s) => {
-    this.setState({
-      durr: (s - (s %= 60)) / 60 + (9 < s ? ":" : ":0") + ~~s,
-    });
-  };
-
-  componentDidMount() {
-    this.fmtMSS(this.props.song.duration);
-  }
-  render() {
-    return (
-      <div
-        onClick={() => this.props.selectSong(this.props.song.id)}
-        className={
-          this.props.selectedSong &&
-          this.props.selectedSong[0].id === this.props.song.id
-            ? "selected"
-            : "song"
-        }
-        key={this.props.song.id}
-      >
-        <div className='d-flex justify-content-between'>
-          <p>
-            <RiMusicLine />
-            {this.props.song.title}
-          </p>
-          <p>{this.state.durr}</p>
-        </div>
-        <div
-          className={
-            this.props.selectedSong &&
-            this.props.selectedSong[0].id === this.props.song.id
-              ? "text-left"
-              : "text-left artistSong"
-          }
-        >
-          <p>{this.props.song.artist.name}</p>
-        </div>
+  return (
+    <div
+      onClick={() => props.selectSong(props.song.id)}
+      className={
+        props.selectedSong && props.selectedSong[0].id === props.song.id
+          ? "song selected"
+          : "song"
+      }
+      key={props.song.id}
+    >
+      <div className='d-flex justify-content-between px-2'>
+        <p>
+          <RiMusicLine className='mr-2' />
+          {props.song.title}
+        </p>
+        <p>{fmtMSS(props.song.duration)}</p>
       </div>
-    );
-  }
+      <div
+        className={
+          props.selectedSong && props.selectedSong[0].id === props.song.id
+            ? "text-left px-2"
+            : "text-left artistSong px-2"
+        }
+      >
+        <p>{props.song.artist.name}</p>
+      </div>
+    </div>
+  );
 }
 
 export default connect(mapStateToProps)(Song);
