@@ -13,7 +13,7 @@ function Song(props) {
     <div
       onClick={() => props.selectSong(props.song.id)}
       className={
-        props.selectedSong && props.selectedSong[0].id === props.song.id
+        props.selectedSong && props.selectedSong.id === props.song.id
           ? "song selected"
           : "song"
       }
@@ -28,7 +28,7 @@ function Song(props) {
       </div>
       <div
         className={
-          props.selectedSong && props.selectedSong[0].id === props.song.id
+          props.selectedSong && props.selectedSong.id === props.song.id
             ? "text-left px-2"
             : "text-left artistSong px-2"
         }

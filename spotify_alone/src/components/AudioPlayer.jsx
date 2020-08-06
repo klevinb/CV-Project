@@ -69,6 +69,14 @@ class AudioPlayer extends Component {
     }
   };
 
+  repeatSongs = () => {
+    if (this.state.repeat) {
+      this.setState({ repeat: false });
+    } else {
+      this.setState({ repeat: true });
+    }
+  };
+
   handleProgress = (e) => {
     let compute = (e.target.value * this.state.dur) / 100;
     this.setCurrentTime(compute);
@@ -77,6 +85,7 @@ class AudioPlayer extends Component {
 
   playNext = () => {
     const findIndex = this.props.tracksList.indexOf(this.props.selectedSong);
+
     if (findIndex !== this.props.tracksList.length - 1) {
       const findNext = this.props.tracksList.slice(
         findIndex + 1,
@@ -88,6 +97,8 @@ class AudioPlayer extends Component {
       );
 
       this.props.selectSong(findId.id);
+    } else {
+      this.props.selectSong(this.props.tracksList[0].id);
     }
   };
 
@@ -102,6 +113,16 @@ class AudioPlayer extends Component {
       this.props.selectSong(findId.id);
     }
   };
+
+  myFunction = () => {
+    if (this.state.repeat) this.playNext();
+    else this.audio.current.pause();
+  };
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.repeat !== this.state.repeat) {
+      this.audio.current.addEventListener("ended", this.myFunction);
+    }
+  }
 
   render() {
     return (
@@ -133,7 +154,10 @@ class AudioPlayer extends Component {
               <MdSkipNext onClick={() => this.playNext()} />
             </span>
             <span>
-              <MdRepeat />
+              <MdRepeat
+                className={this.state.repeat ? "clicked" : ""}
+                onClick={() => this.repeatSongs()}
+              />
             </span>
           </div>
           <audio

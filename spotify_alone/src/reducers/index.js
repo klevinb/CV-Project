@@ -24,12 +24,28 @@ export default function (state = {}, action) {
           albumInfo: false,
         },
       };
+    case "FETCH_ARTIST":
+      return {
+        ...state,
+        loading: {
+          ...state.loading,
+          artistInfo: false,
+        },
+        artistInfo: action.payload,
+        tracksList: action.payload.topSongs.data.map((track) => track),
+      };
     case "SELECT_SONG":
       return {
         ...state,
-        selectedSong: state.tracksList.filter(
+        selectedSong: state.tracksList.find(
           (track) => track.id === action.payload
         ),
+        playing: true,
+      };
+    case "PLAY_PREVIEW":
+      return {
+        ...state,
+        selectedSong: action.payload,
         playing: true,
       };
     case "TOGGLE_PLAY":
@@ -45,16 +61,19 @@ export default function (state = {}, action) {
             ? [...state.likedSongs.filter((like) => like !== action.payload)]
             : [...state.likedSongs, action.payload],
       };
-    case "FETCH_ARTIST":
+    case "CLEAR_STATE":
       return {
         ...state,
         loading: {
-          ...state.loading,
-          artistInfo: false,
+          albums: true,
+          albumInfo: true,
+          artistInfo: true,
         },
-        tracksList: action.payload.topSongs.data.map((track) => track),
-        artistInfo: action.payload,
+        albumInfo: null,
+        artistInfo: null,
+        tracksList: null,
       };
+
     default:
       return state;
   }

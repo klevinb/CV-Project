@@ -9,11 +9,18 @@ const mapStateToProps = (state) => state;
 const mapDispatchToProps = (dispatch) => ({
   fetchAlbumInfo: (id) => dispatch(fetchAlbumInfos(id)),
   selectSong: (id) => dispatch(selectSongThunk(id)),
+  clearState: () =>
+    dispatch({
+      type: "CLEAR_STATE",
+    }),
 });
 
 class AlbumPage extends Component {
   componentDidMount() {
     this.props.fetchAlbumInfo(this.props.match.params.id);
+  }
+  componentWillUnmount() {
+    this.props.clearState();
   }
   render() {
     return (
@@ -37,7 +44,7 @@ class AlbumPage extends Component {
                     {this.props.albumInfo.title}
                   </h4>
                   <Button className='play'>PLAY</Button>
-                  <Link to={"/artistdetails/"}>
+                  <Link to={"/artist/" + this.props.albumInfo.artist.id}>
                     <label id='label2'>
                       {this.props.albumInfo.artist.name}
                     </label>

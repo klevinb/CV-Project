@@ -9,7 +9,7 @@ import { withRouter } from "react-router-dom";
 
 class NavigationBar extends Component {
   state = {
-    loggedin: false,
+    loggedin: true,
   };
   render() {
     return (

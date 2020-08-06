@@ -162,7 +162,6 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
 }
 
 .albumPage {
-  background-color: red;
   background-color: rgba(0, 0, 0, 0.855);
   height: 90vh;
 }
@@ -204,7 +203,7 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
   cursor: pointer;
 }
 
-#content .play {
+.play {
   width: 130px;
   align-self: center;
   margin-top: 30px;
@@ -218,6 +217,17 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
   font-weight: 400;
   border-radius: 20px;
   margin-bottom: 10px;
+}
+
+.play:hover {
+  background-color: #05d828;
+  border-color: #04ce26;
+}
+
+.play:focus {
+  background-color: #05d828;
+  border-color: #04ce26;
+  outline: none;
 }
 
 #songs {
@@ -276,4 +286,71 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
 .selected {
   background-color: rgb(131, 131, 131);
   border-radius: 5px;
+}
+
+.searchPage {
+  background-color: rgba(0, 0, 0, 0.855);
+  height: 90vh;
+  overflow-x: auto;
+}
+
+.searchPage::-webkit-scrollbar {
+  width: 1em;
+}
+
+.searchPage::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.searchPage::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+#searchField {
+  margin-top: 20px;
+  width: 30%;
+  font-size: 25px;
+  color: whitesmoke !important;
+  text-align: center;
+  background-color: transparent;
+}
+
+.songSearch .card {
+  background-color: transparent;
+  border: transparent;
+  text-align: center;
+  color: whitesmoke;
+}
+
+.songSearch .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.songSearch .card-body p {
+  padding: 0;
+  margin: 10px;
+  height: 30px;
+}
+
+.songSearch .card img {
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+#albumButton {
+  background-color: transparent;
+  border: 0;
+  text-decoration: underline;
+  color: gray;
+}
+
+#albumButton:hover {
+  color: whitesmoke;
+}
+
+.clicked {
+  color: lightgreen;
 }

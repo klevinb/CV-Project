@@ -12,6 +12,8 @@ const initialStore = {
     artistInfo: true,
   },
   albumInfo: null,
+  artistInfo: null,
+  tracksList: null,
   selectedSong: null,
   playing: false,
   likedSongs: [],

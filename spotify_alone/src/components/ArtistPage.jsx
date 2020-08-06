@@ -9,12 +9,19 @@ const mapStateToProps = (state) => state;
 const mapDispatchToProps = (dispatch) => ({
   fetchArtist: (id) => dispatch(fetchArtistInfos(id)),
   selectSong: (id) => dispatch(selectSongThunk(id)),
+  clearState: () =>
+    dispatch({
+      type: "CLEAR_STATE",
+    }),
 });
 
 class ArtistPage extends Component {
   componentDidMount = async () => {
     this.props.fetchArtist(this.props.match.params.id);
   };
+  componentWillUnmount() {
+    this.props.clearState();
+  }
   render() {
     return (
       <>
