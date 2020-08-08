@@ -84,39 +84,48 @@ class AudioPlayer extends Component {
   };
 
   playNext = () => {
-    const findIndex = this.props.tracksList.indexOf(this.props.selectedSong);
+    console.log(this.props.tracksList);
+    if (this.props.tracksList !== null) {
+      const findIndex = this.props.tracksList.indexOf(this.props.selectedSong);
 
-    if (findIndex !== this.props.tracksList.length - 1) {
-      const findNext = this.props.tracksList.slice(
-        findIndex + 1,
-        findIndex + 2
-      );
+      if (findIndex !== this.props.tracksList.length - 1) {
+        const findNext = this.props.tracksList.slice(
+          findIndex + 1,
+          findIndex + 2
+        );
 
-      const findId = this.props.tracksList.find(
-        (track) => track.preview === findNext[0].preview
-      );
+        const findId = this.props.tracksList.find(
+          (track) => track.preview === findNext[0].preview
+        );
 
-      this.props.selectSong(findId.id);
-    } else {
-      this.props.selectSong(this.props.tracksList[0].id);
+        this.props.selectSong(findId.id);
+      } else {
+        this.props.selectSong(this.props.tracksList[0].id);
+      }
     }
   };
 
   playPrevious = () => {
-    const findIndex = this.props.tracksList.indexOf(this.props.selectedSong);
-    if (findIndex !== 0) {
-      const findNext = this.props.tracksList.slice(findIndex - 1, findIndex);
-      const findId = this.props.tracksList.find(
-        (track) => track.preview === findNext[0].preview
-      );
+    console.log(this.props.tracksList);
+    if (this.props.tracksList !== null) {
+      const findIndex = this.props.tracksList.indexOf(this.props.selectedSong);
+      if (findIndex !== 0) {
+        const findNext = this.props.tracksList.slice(findIndex - 1, findIndex);
+        const findId = this.props.tracksList.find(
+          (track) => track.preview === findNext[0].preview
+        );
 
-      this.props.selectSong(findId.id);
+        this.props.selectSong(findId.id);
+      }
     }
   };
 
   myFunction = () => {
-    if (this.state.repeat) this.playNext();
-    else this.audio.current.pause();
+    if (this.state.repeat) {
+      if (this.props.tracksList !== null) this.playNext();
+    } else {
+      this.audio.current.pause();
+    }
   };
   componentDidUpdate(prevProps, prevState) {
     if (prevState.repeat !== this.state.repeat) {

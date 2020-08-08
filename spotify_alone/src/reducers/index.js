@@ -32,7 +32,7 @@ export default function (state = {}, action) {
           artistInfo: false,
         },
         artistInfo: action.payload,
-        tracksList: action.payload.topSongs.data.map((track) => track),
+        tracksList: action.payload.topSongs.data,
       };
     case "SELECT_SONG":
       return {
@@ -45,6 +45,7 @@ export default function (state = {}, action) {
     case "PLAY_PREVIEW":
       return {
         ...state,
+        tracksList: null,
         selectedSong: action.payload,
         playing: true,
       };
@@ -71,7 +72,6 @@ export default function (state = {}, action) {
         },
         albumInfo: null,
         artistInfo: null,
-        tracksList: null,
       };
 
     default:

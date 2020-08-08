@@ -47,7 +47,7 @@ function SearchPage(props) {
         <Col className='songSearch' sm={12}>
           <Row className='row-cols-1 row-cols-md-3 row-cols-lg-4'>
             {searchResult.map((song, key) => (
-              <Col className='d-flex-justify-content-center' sm={12}>
+              <Col key={key} className='d-flex-justify-content-center' sm={12}>
                 <Card>
                   <Card.Body>
                     <Card.Img

@@ -18,24 +18,38 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class Footer extends Component {
+  state = {
+    imgSrc: "",
+    albumInfo: "",
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.selectedSong !== this.props.selectedSong) {
+      console.log("HERE");
+      console.log(this.state.albumInfo);
+      if (this.props.selectedSong.contributors) {
+        this.setState({ imgSrc: this.props.selectedSong.album.cover_xl });
+      } else {
+        if (this.props.selectedSong.album) {
+          this.setState({ imgSrc: this.props.selectedSong.album.cover_big });
+        } else {
+          this.setState({ imgSrc: this.state.albumInfo.cover_big });
+        }
+      }
+    } else if (
+      prevProps.albumInfo !== this.props.albumInfo &&
+      this.props.albumInfo !== null
+    ) {
+      this.setState({ albumInfo: this.props.albumInfo });
+    }
+  }
+
   render() {
     return (
       <>
         <Col className='d-flex pl-2' md={3}>
-          {this.props.selectedSong && this.props.selectedSong.contributors ? (
-            <Image src={this.props.selectedSong.album.cover_xl} />
-          ) : this.props.selectedSong && this.props.selectedSong.album ? (
-            <Image
-              src={
-                this.props.selectedSong &&
-                this.props.selectedSong.album.cover_big
-              }
-            />
-          ) : (
-            <Image
-              src={this.props.albumInfo && this.props.albumInfo.cover_big}
-            />
-          )}
+          <Image src={this.state.imgSrc} />
+
           <Col className='d-flex flex-column' sm={12} md={8}>
             <span>
               {this.props.selectedSong ? (
