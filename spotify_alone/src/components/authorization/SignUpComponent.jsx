@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Image, Button, FormControl, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-function SignUpComponent({ toggleLogin, handleOptionChange, selectedOption }) {
+function SignUpComponent({ handleOptionChange, selectedOption, ...props }) {
   return (
     <>
       <Container fluid className='signupPage'>
@@ -11,7 +11,16 @@ function SignUpComponent({ toggleLogin, handleOptionChange, selectedOption }) {
       <Container>
         <div className='signupContent d-flex flex-column'>
           <span id='title'>Sign up for free to start listening.</span>
-          <Button id='facebookBtn'>SIGN UP WITH FACEBOOK</Button>
+          <Button
+            id='facebookBtn'
+            onClick={() =>
+              alert(
+                "We haven't implemented this feature yet but you can sign up"
+              )
+            }
+          >
+            SIGN UP WITH FACEBOOK
+          </Button>
           <div className='d-flex justify-content-between'>
             <hr />
             <p>OR</p>
@@ -118,7 +127,10 @@ function SignUpComponent({ toggleLogin, handleOptionChange, selectedOption }) {
               <div className='d-flex justify-content-center'>
                 <span>
                   Have an account?{" "}
-                  <span onClick={() => toggleLogin()}>Log in</span> .
+                  <span onClick={() => props.history.push("/login")}>
+                    Log in
+                  </span>{" "}
+                  .
                 </span>
               </div>
             </div>
@@ -129,4 +141,4 @@ function SignUpComponent({ toggleLogin, handleOptionChange, selectedOption }) {
   );
 }
 
-export default SignUpComponent;
+export default withRouter(SignUpComponent);

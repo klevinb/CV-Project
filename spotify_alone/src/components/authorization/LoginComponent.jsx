@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Image, Button, FormControl, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-function LoginComponent({ toggleLogin }) {
+function LoginComponent(props) {
   return (
     <>
       <Container fluid className='loginPage'>
@@ -11,8 +11,26 @@ function LoginComponent({ toggleLogin }) {
       <Container>
         <div className='loginContent d-flex flex-column'>
           <span>To continue, log in to Spotify.</span>
-          <Button id='facebookBtn'>CONTINUE WITH FACEBOOK</Button>
-          <Button id='appleBtn'>CONTINUE WITH APPLE</Button>
+          <Button
+            id='facebookBtn'
+            onClick={() =>
+              alert(
+                "We haven't implemented this feature yet, you can log in with your credentials"
+              )
+            }
+          >
+            CONTINUE WITH FACEBOOK
+          </Button>
+          <Button
+            id='appleBtn'
+            onClick={() =>
+              alert(
+                "We haven't implemented this feature yet, you can log in with your credentials"
+              )
+            }
+          >
+            CONTINUE WITH APPLE
+          </Button>
           <div className='d-flex justify-content-between'>
             <hr />
             <p>OR</p>
@@ -49,7 +67,10 @@ function LoginComponent({ toggleLogin }) {
             <hr />
             <div className='signupSection  d-flex flex-column'>
               <span>Don't have an account?</span>
-              <Button id='signupBtn' onClick={() => toggleLogin()}>
+              <Button
+                id='signupBtn'
+                onClick={() => props.history.push("/login?signup")}
+              >
                 SIGN UP FOR SPOTIFY
               </Button>
               <hr />
@@ -66,4 +87,4 @@ function LoginComponent({ toggleLogin }) {
   );
 }
 
-export default LoginComponent;
+export default withRouter(LoginComponent);

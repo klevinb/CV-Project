@@ -3,11 +3,11 @@ import { Row, Col, Image, Spinner, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Song from "./Song";
 import { connect } from "react-redux";
-import { fetchAlbumInfos, selectSongThunk } from "../utilitis";
+import { fetchArtistInfos, selectSongThunk } from "../../utilitis";
 
 const mapStateToProps = (state) => state;
 const mapDispatchToProps = (dispatch) => ({
-  fetchAlbumInfo: (id) => dispatch(fetchAlbumInfos(id)),
+  fetchArtist: (id) => dispatch(fetchArtistInfos(id)),
   selectSong: (id) => dispatch(selectSongThunk(id)),
   clearState: () =>
     dispatch({
@@ -15,17 +15,17 @@ const mapDispatchToProps = (dispatch) => ({
     }),
 });
 
-class AlbumPage extends Component {
-  componentDidMount() {
-    this.props.fetchAlbumInfo(this.props.match.params.id);
-  }
+class ArtistPage extends Component {
+  componentDidMount = async () => {
+    this.props.fetchArtist(this.props.match.params.id);
+  };
   componentWillUnmount() {
     this.props.clearState();
   }
   render() {
     return (
       <>
-        {this.props.albumInfo && (
+        {this.props.artistInfo && (
           <Col className='albumPage' md={10}>
             <Row className='row row-cols-xs-1'>
               <div
@@ -35,25 +35,25 @@ class AlbumPage extends Component {
                 <div id='artist' className='card mt-5'>
                   <Image
                     onClick={this.showComments}
-                    src={this.props.albumInfo.cover_xl}
+                    src={this.props.artistInfo.artist.picture_xl}
                     style={{ height: "250px" }}
                   />
                   <p></p>
                   <h4 id='label1'>
-                    {this.props.albumInfo.artist.name}{" "}
-                    {this.props.albumInfo.title}
+                    {this.props.artistInfo.artist.name}
+                    {" - Top 50"}
                   </h4>
                   <Button className='play'>PLAY</Button>
-                  <Link to={"/artist/" + this.props.albumInfo.artist.id}>
+                  <Link to={"/artist/" + this.props.artistInfo.artist.id}>
                     <label id='label2'>
-                      {this.props.albumInfo.artist.name}
+                      {this.props.artistInfo.artist.name}
                     </label>
                   </Link>
                 </div>
               </div>
               <div id='songs' className='col'>
                 <div className='card'>
-                  {this.props.albumInfo.tracks.data.map((song, i) => (
+                  {this.props.artistInfo.topSongs.data.map((song, i) => (
                     <Song
                       selectSong={this.props.selectSong}
                       key={i}
@@ -66,7 +66,7 @@ class AlbumPage extends Component {
           </Col>
         )}
 
-        {this.props.loading.albumInfo && (
+        {this.props.loading.artistInfo && (
           <Col className='albumPage' md={10}>
             <Row className='row row-cols-xs-1'>
               <Col
@@ -89,4 +89,4 @@ class AlbumPage extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AlbumPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ArtistPage);

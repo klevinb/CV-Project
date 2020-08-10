@@ -84,7 +84,6 @@ class AudioPlayer extends Component {
   };
 
   playNext = () => {
-    console.log(this.props.tracksList);
     if (this.props.tracksList !== null) {
       const findIndex = this.props.tracksList.indexOf(this.props.selectedSong);
 
@@ -106,7 +105,6 @@ class AudioPlayer extends Component {
   };
 
   playPrevious = () => {
-    console.log(this.props.tracksList);
     if (this.props.tracksList !== null) {
       const findIndex = this.props.tracksList.indexOf(this.props.selectedSong);
       if (findIndex !== 0) {

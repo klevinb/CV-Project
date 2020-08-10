@@ -2,13 +2,10 @@ import React, { useState } from "react";
 import { Row, Col, FormControl, Card, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { selectSongFromSearch } from "../../utilitis";
 
-const mapDispatchToProps = (dispatch) => ({
-  selectSong: (song) =>
-    dispatch({
-      type: "PLAY_PREVIEW",
-      payload: song,
-    }),
+const mapDispatchToProps = (dispatch, props) => ({
+  selectSong: (song) => dispatch(selectSongFromSearch(song)),
 });
 
 function SearchPage(props) {

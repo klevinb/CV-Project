@@ -1,15 +1,25 @@
-export const fetchAlbumsWithThunk = () => {
+export const fetchArtistsWithThunk = () => {
   let albums = [];
+  let albums2 = [];
   const artistsArray = [
-    "halsey",
-    "eminem",
-    "adele",
-    "drake",
-    "jessie",
     "stormzy",
+    "skepta",
+    "dave",
+    "chip",
+    "bugzy malone",
+    "nadia rose",
+  ];
+  const usaArtists = [
+    "adele",
+    "dua lipa",
+    "eminem",
+    "drake",
+    "kendrick lamar",
+    "nicki minaj",
   ];
   return (dispatch, getState) => {
     let promises = [];
+    let promises2 = [];
     artistsArray.forEach((artist) =>
       promises.push(
         fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`, {
@@ -21,17 +31,29 @@ export const fetchAlbumsWithThunk = () => {
           },
         })
           .then((resp) => resp.json())
-          .then((respObj) => albums.push(respObj.data[8]))
+          .then((respObj) => albums.push(respObj.data[5]))
       )
     );
-    Promise.all(promises)
-      .then(() => console.log("its done"))
-      .then(() =>
-        dispatch({
-          type: "FETCH_ALBUMS",
-          payload: albums,
+    usaArtists.forEach((artist) =>
+      promises2.push(
+        fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`, {
+          method: "GET",
+          headers: {
+            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+            "x-rapidapi-key":
+              "b0688e745dmsh41b788a14af44c3p1bd80cjsn95f97f3e6443",
+          },
         })
-      );
+          .then((resp) => resp.json())
+          .then((respObj) => albums2.push(respObj.data[5]))
+      )
+    );
+    Promise.all([...promises, ...promises2]).then(() =>
+      dispatch({
+        type: "FETCH_ARTISTS",
+        payload: { uk: albums, usa: albums2 },
+      })
+    );
   };
 };
 
@@ -56,10 +78,26 @@ export const fetchAlbumInfos = (id) => {
 
 export const selectSongThunk = (id) => {
   return (dispatch, getState) => {
-    dispatch({
-      type: "SELECT_SONG",
-      payload: id,
-    });
+    if (getState().loggedin === true) {
+      dispatch({
+        type: "SELECT_SONG",
+        payload: id,
+      });
+    } else {
+      alert("You need to log in");
+    }
+  };
+};
+export const selectSongFromSearch = (song) => {
+  return (dispatch, getState) => {
+    if (getState().loggedin === true) {
+      dispatch({
+        type: "PLAY_PREVIEW",
+        payload: song,
+      });
+    } else {
+      alert("You need to log in");
+    }
   };
 };
 

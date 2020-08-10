@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import LoginComponent from "./LoginComponent";
 import SignUpComponent from "./SignUpComponent";
-import "../styles/signup.css";
-import "../styles/login.css";
+import "../../styles/signup.css";
+import "../../styles/login.css";
 
 class Login extends Component {
   state = {
@@ -17,23 +17,18 @@ class Login extends Component {
     });
   };
 
-  toggleLogin = () => {
-    this.setState({ login: !this.state.login });
-  };
-
   render() {
     return (
       <>
-        {this.state.login ? (
+        {this.state.login && this.props.location.search !== "?signup" ? (
           <>
-            <LoginComponent toggleLogin={this.toggleLogin} />
+            <LoginComponent />
           </>
         ) : (
           <>
             <SignUpComponent
               selectedOption={this.state.selectedOption}
               handleOptionChange={this.handleOptionChange}
-              toggleLogin={this.toggleLogin}
             />
           </>
         )}

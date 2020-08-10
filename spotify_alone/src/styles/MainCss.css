@@ -354,3 +354,19 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
 .clicked {
   color: rgb(0, 255, 0) !important;
 }
+
+.privacy p {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 0;
+  color: gray;
+}
+.privacy p:hover {
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+.privacy div:nth-last-child(1) p {
+  border-left: 2px solid gray;
+  padding-left: 20px;
+}

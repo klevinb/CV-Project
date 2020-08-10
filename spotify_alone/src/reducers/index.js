@@ -1,6 +1,6 @@
 export default function (state = {}, action) {
   switch (action.type) {
-    case "FETCH_ALBUMS":
+    case "FETCH_ARTISTS":
       return {
         ...state,
         albums: action.payload,
@@ -47,6 +47,15 @@ export default function (state = {}, action) {
         ...state,
         tracksList: null,
         selectedSong: action.payload,
+        playing: true,
+      };
+    case "PLAY_LIKEDSONG":
+      return {
+        ...state,
+        tracksList: null,
+        selectedSong: state.likedSongs.find(
+          (song) => song.id === action.payload
+        ),
         playing: true,
       };
     case "TOGGLE_PLAY":
