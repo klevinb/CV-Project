@@ -370,3 +370,126 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
   border-left: 2px solid gray;
   padding-left: 20px;
 }
+
+.nav-bar #burgerIcon {
+  display: none;
+}
+.homePage::-webkit-scrollbar {
+  display: none;
+}
+
+.homePage .card-body span {
+  font-size: 13px;
+  color: #ccc;
+}
+
+#loadMoreBtn {
+  border: 0;
+  text-align: center;
+  color: gray;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (max-width: 575px) {
+  .userInfo {
+    display: none !important;
+  }
+  .show {
+    display: none !important;
+  }
+  .nav-bar {
+    position: fixed;
+    height: auto;
+    z-index: 2;
+    background-color: black;
+  }
+  .nav-bar a {
+    width: 50%;
+  }
+  .nav-bar ul {
+    width: 50%;
+    z-index: 99;
+  }
+  .nav-bar #burgerIcon {
+    display: block;
+    position: fixed;
+    top: 3%;
+    right: 5%;
+  }
+  .nav-links {
+    overflow: hidden;
+  }
+  .nav-links ul {
+    overflow-x: auto;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+  }
+  .nav-links ul::-webkit-scrollbar {
+    display: none;
+  }
+  .footer > div:last-child {
+    display: none !important;
+  }
+  .footer {
+    position: fixed;
+    bottom: 0;
+    height: auto;
+    z-index: 99;
+    background-color: black;
+    padding-bottom: 10px;
+  }
+  .albumPage {
+    margin-top: 50px;
+    height: 90vh;
+    overflow-y: auto;
+  }
+  #songs {
+    overflow: unset;
+  }
+  .albumPage #content {
+    justify-content: center !important;
+  }
+  .albumPage #artist img {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .albumPage #songs .card {
+    padding-bottom: 20vh;
+  }
+  .albumPage #songs {
+    margin: 0;
+    padding: 20px;
+    height: unset;
+  }
+
+  .searchPage {
+    margin-top: 50px;
+  }
+  .searchPage::-webkit-scrollbar {
+    display: none;
+  }
+  .searchPage .row svg {
+    color: gray;
+    font-size: 35px;
+    margin-left: 10px;
+    margin-top: 20px;
+  }
+  .songSearch {
+    padding-bottom: 20vh;
+  }
+  .homePage {
+    margin-top: 50px;
+    padding-bottom: 20vh;
+  }
+  .homePage::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 900px) {
+  .albumPage {
+    background-color: red;
+  }
+}

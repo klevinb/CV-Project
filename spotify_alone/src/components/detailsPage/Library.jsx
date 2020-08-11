@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Col, Row, Spinner, Image, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import Song from "./Song";
-import { selectSongFromSearch } from "../../utilitis";
 
 const mapStateToProps = (state) => state;
 
@@ -11,8 +10,6 @@ const mapDispatchToProps = (dispatch, props) => ({
 });
 
 function Library(props) {
-  const [clicked, setClicked] = useState("");
-
   return (
     <>
       <Col className='albumPage' md={10}>
@@ -22,13 +19,7 @@ function Library(props) {
             className='col-12 col-md-4 d-flex justify-content-end'
           >
             <div className='card mt-5 mr-2 text-center'>
-              <Image
-                onClick={() =>
-                  setClicked(clicked === "LikedSongs" ? "" : "LikedSongs")
-                }
-                src='/likedSongs.png'
-                style={{ height: "250px" }}
-              />
+              <Image src='/likedSongs.png' style={{ height: "250px" }} />
               <p></p>
               <h4 id='label1'>Liked Songs</h4>
               <Button className='play'>PLAY</Button>
@@ -36,15 +27,18 @@ function Library(props) {
               <label id='label2'>{props.likedSongs.length} Songs</label>
             </div>
           </div>
-          {clicked === "LikedSongs" && (
-            <div id='songs' className='col'>
-              <div className='card'>
-                {props.likedSongs.map((song, i) => (
+
+          <div id='songs' className='col'>
+            <div className='card'>
+              {props.likedSongs.length ? (
+                props.likedSongs.map((song, i) => (
                   <Song selectSong={props.selectSong} key={i} song={song} />
-                ))}
-              </div>
+                ))
+              ) : (
+                <p>No liked song yet. </p>
+              )}
             </div>
-          )}
+          </div>
         </Row>
       </Col>
 

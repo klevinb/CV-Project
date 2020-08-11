@@ -7,10 +7,7 @@ export default function (state = {}, action) {
         loading: {
           ...state.loading,
           albums: false,
-          albumInfo: true,
-          artistInfo: true,
         },
-        albumInfo: null,
       };
     case "FETCH_ALBUM_INFO":
       return {

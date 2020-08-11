@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Col, Row, Image, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AiOutlineHome, AiFillHome } from "react-icons/ai";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { FiSearch } from "react-icons/fi";
 import { GiBookshelf } from "react-icons/gi";
 import { RiDownloadLine } from "react-icons/ri";
@@ -12,6 +13,7 @@ const mapStateToProps = (state) => state;
 
 function NavigationBar(props) {
   const [selected, setSelected] = useState("Home");
+  const [show, setShow] = useState(true);
   return (
     <>
       <Col
@@ -22,20 +24,42 @@ function NavigationBar(props) {
           <Link to='/'>
             <Image fluid src='/spotify_navigation_logo.png' alt='nav-logo' />
           </Link>
-          <ul className='mt-3'>
+          <GiHamburgerMenu
+            onClick={() => setShow(show ? false : true)}
+            id='burgerIcon'
+          />
+
+          <ul className={show ? "mt-3 show" : "mt-3"}>
             <li>
-              <Link onClick={() => setSelected("Home")} to='/'>
+              <Link
+                onClick={() => {
+                  setSelected("Home");
+                  setShow(show ? false : true);
+                }}
+                to='/'
+              >
                 {selected === "Home" ? <AiFillHome /> : <AiOutlineHome />}
                 Home
               </Link>
             </li>
             <li>
-              <Link onClick={() => setSelected("Search")} to='/search'>
+              <Link
+                onClick={() => {
+                  setSelected("Search");
+                  setShow(show ? false : true);
+                }}
+                to='/search'
+              >
                 <FiSearch />
                 Search
               </Link>
             </li>
-            <li onClick={() => setSelected("Your Library")}>
+            <li
+              onClick={() => {
+                setSelected("Your Library");
+                setShow(show ? false : true);
+              }}
+            >
               <Link to='/library'>
                 <GiBookshelf />
                 Your Library

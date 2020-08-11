@@ -31,7 +31,7 @@ export const fetchArtistsWithThunk = () => {
           },
         })
           .then((resp) => resp.json())
-          .then((respObj) => albums.push(respObj.data[5]))
+          .then((respObj) => albums.push(respObj.data[3]))
       )
     );
     usaArtists.forEach((artist) =>
@@ -45,7 +45,7 @@ export const fetchArtistsWithThunk = () => {
           },
         })
           .then((resp) => resp.json())
-          .then((respObj) => albums2.push(respObj.data[5]))
+          .then((respObj) => albums2.push(respObj.data[3]))
       )
     );
     Promise.all([...promises, ...promises2]).then(() =>
