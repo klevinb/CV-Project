@@ -1,40 +1,32 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import LoginComponent from "./LoginComponent";
 import SignUpComponent from "./SignUpComponent";
 import "../../styles/signup.css";
 import "../../styles/login.css";
 
-class Login extends Component {
-  state = {
-    login: true,
-    selectedOption: "",
+function Login(props) {
+  const [selectedOption, setSelectedOpt] = useState("");
+
+  const handleOptionChange = (changeEvent) => {
+    setSelectedOpt(changeEvent.target.value);
   };
 
-  handleOptionChange = (changeEvent) => {
-    console.log(changeEvent.target.value);
-    this.setState({
-      selectedOption: changeEvent.target.value,
-    });
-  };
-
-  render() {
-    return (
-      <>
-        {this.state.login && this.props.location.search !== "?signup" ? (
-          <>
-            <LoginComponent />
-          </>
-        ) : (
-          <>
-            <SignUpComponent
-              selectedOption={this.state.selectedOption}
-              handleOptionChange={this.handleOptionChange}
-            />
-          </>
-        )}
-      </>
-    );
-  }
+  return (
+    <>
+      {props.location.search !== "?signup" ? (
+        <>
+          <LoginComponent />
+        </>
+      ) : (
+        <>
+          <SignUpComponent
+            selectedOption={selectedOption}
+            handleOptionChange={handleOptionChange}
+          />
+        </>
+      )}
+    </>
+  );
 }
 
 export default Login;
