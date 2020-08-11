@@ -3,6 +3,7 @@ import { Row, Col, FormControl, Card, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectSongFromSearch } from "../../utilitis";
+import { BsSearch } from "react-icons/bs";
 
 const mapDispatchToProps = (dispatch, props) => ({
   selectSong: (song) => dispatch(selectSongFromSearch(song)),
@@ -11,26 +12,34 @@ const mapDispatchToProps = (dispatch, props) => ({
 function SearchPage(props) {
   const [search, setSearch] = useState("");
   const [searchResult, setSeachResult] = useState([]);
+  const [limit, setLimit] = useState(4);
+
+  const fetchArtist = () => {
+    fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${search}`, {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+        "x-rapidapi-key": "b0688e745dmsh41b788a14af44c3p1bd80cjsn95f97f3e6443",
+      },
+    })
+      .then((resp) => resp.json())
+      .then((respResult) => setSeachResult(respResult.data));
+  };
 
   const keyPress = (e) => {
     if (e.key === "Enter" && search.length) {
-      fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${search}`, {
-        method: "GET",
-        headers: {
-          "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-          "x-rapidapi-key":
-            "b0688e745dmsh41b788a14af44c3p1bd80cjsn95f97f3e6443",
-        },
-      })
-        .then((resp) => resp.json())
-        .then((respResult) => setSeachResult(respResult.data));
+      fetchArtist();
+      setSearch("");
     }
   };
 
   return (
     <Col className='searchPage' md={10}>
       <Row>
-        <Col className='d-flex justify-content-center' sm={12}>
+        <Col
+          className='d-flex justify-content-center align-items-center'
+          sm={12}
+        >
           <FormControl
             id='searchField'
             type='text'
@@ -40,10 +49,16 @@ function SearchPage(props) {
             onKeyDown={(e) => keyPress(e)}
             className='mr-sm-2'
           />
+          <BsSearch
+            onClick={() => {
+              fetchArtist();
+              setSearch("");
+            }}
+          />
         </Col>
-        <Col className='songSearch' sm={12}>
+        <Col className='songSearch d-flex flex-column' sm={12}>
           <Row className='row-cols-1 row-cols-md-3 row-cols-lg-4'>
-            {searchResult.map((song, key) => (
+            {searchResult.slice(0, limit).map((song, key) => (
               <Col key={key} className='d-flex-justify-content-center' sm={12}>
                 <Card>
                   <Card.Body>
@@ -84,6 +99,16 @@ function SearchPage(props) {
               </Col>
             ))}
           </Row>
+          {searchResult.length && (
+            <div
+              id='loadMoreBtn'
+              onClick={() => {
+                setLimit(limit + 4);
+              }}
+            >
+              Show more
+            </div>
+          )}
         </Col>
       </Row>
     </Col>
