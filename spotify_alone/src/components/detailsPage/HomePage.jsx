@@ -1,23 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Col, Container } from "react-bootstrap";
 import "../../styles/home.css";
 import ArtistAlbumComponent from "./ArtistAlbumComponent";
-import { fetchArtistsWithThunk } from "../../utilitis";
+
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => state;
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchArtists: () => dispatch(fetchArtistsWithThunk()),
-});
-
 function HomePage(props) {
   const [selected, setSelected] = useState("TRENDING");
-
-  useEffect(() => {
-    props.fetchArtists();
-  }, []);
-
   return (
     <Col className='homePage' md={10}>
       <div className='nav-links'>
@@ -66,4 +57,4 @@ function HomePage(props) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps)(HomePage);
