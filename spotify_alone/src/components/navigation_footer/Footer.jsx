@@ -45,50 +45,56 @@ class Footer extends Component {
   render() {
     return (
       <>
-        <Col className='d-flex pl-2' md={3}>
+        <Col className='d-flex pl-2' md={6} lg={3}>
           {this.props.loggedin && (
             <>
               {this.props.selectedSong && <Image src={this.state.imgSrc} />}
-              <Col className='d-flex flex-column' sm={12} md={8}>
-                <span>
-                  {this.props.selectedSong ? (
-                    this.props.selectedSong.title_short.length > 15 ? (
-                      <span style={{ fontSize: "12px" }}>
-                        {this.props.selectedSong.title_short.slice(0, 15) +
-                          "..."}
-                      </span>
+              <div className='d-flex justify-content-around w-100'>
+                <div className='d-flex flex-column'>
+                  <span>
+                    {this.props.selectedSong ? (
+                      this.props.selectedSong.title_short.length > 15 ? (
+                        <span style={{ fontSize: "12px" }}>
+                          {this.props.selectedSong.title_short.slice(0, 15) +
+                            "..."}
+                        </span>
+                      ) : (
+                        <span style={{ fontSize: "14px" }}>
+                          {this.props.selectedSong.title_short}
+                        </span>
+                      )
                     ) : (
-                      <span style={{ fontSize: "14px" }}>
-                        {this.props.selectedSong.title_short}
-                      </span>
-                    )
-                  ) : (
-                    <p>Select a song</p>
-                  )}
-                </span>
-                <span style={{ color: "#969696" }}>
-                  {this.props.selectedSong &&
-                    this.props.selectedSong.artist.name}
-                </span>
-              </Col>
-              <div className='d-flex align-items-center'>
-                {this.props.likedSongs &&
-                this.props.likedSongs.indexOf(
-                  this.props.selectedSong && this.props.selectedSong
-                ) !== -1 ? (
-                  <AiFillHeart
-                    onClick={() => this.props.likeSong(this.props.selectedSong)}
-                  />
-                ) : (
-                  <AiOutlineHeart
-                    onClick={
-                      this.props.selectedSong !== null
-                        ? () => this.props.likeSong(this.props.selectedSong)
-                        : () => {}
-                    }
-                  />
+                      <p>Select a song</p>
+                    )}
+                  </span>
+                  <span style={{ color: "#969696", fontSize: "15px" }}>
+                    {this.props.selectedSong &&
+                      this.props.selectedSong.artist.name}
+                  </span>
+                </div>
+                {this.props.selectedSong && (
+                  <div className='d-flex align-items-center'>
+                    {this.props.likedSongs &&
+                    this.props.likedSongs.indexOf(
+                      this.props.selectedSong && this.props.selectedSong
+                    ) !== -1 ? (
+                      <AiFillHeart
+                        onClick={() =>
+                          this.props.likeSong(this.props.selectedSong)
+                        }
+                      />
+                    ) : (
+                      <AiOutlineHeart
+                        onClick={
+                          this.props.selectedSong !== null
+                            ? () => this.props.likeSong(this.props.selectedSong)
+                            : () => {}
+                        }
+                      />
+                    )}
+                    <GoScreenFull />
+                  </div>
                 )}
-                <GoScreenFull />
               </div>
             </>
           )}
