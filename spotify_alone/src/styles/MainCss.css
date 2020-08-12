@@ -391,10 +391,21 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
   cursor: pointer;
 }
 
+.searchPage .row svg {
+  display: none;
+}
+.searchPage {
+  padding-bottom: 20px;
+}
+
 @media (max-width: 575px) {
   .userInfo {
     display: none !important;
   }
+  .nav-bar {
+    height: auto;
+  }
+
   .show {
     display: none !important;
   }
@@ -436,6 +447,7 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
     position: fixed;
     bottom: 0;
     height: auto;
+    width: 100%;
     z-index: 99;
     background-color: black;
     padding-bottom: 10px;
@@ -479,6 +491,17 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
   .songSearch {
     padding-bottom: 20vh;
   }
+
+  .searchPage .row svg {
+    display: block;
+    color: whitesmoke;
+    font-size: 25px;
+  }
+
+  .searchPage .row #searchField {
+    width: 70%;
+  }
+
   .homePage {
     margin-top: 50px;
     padding-bottom: 20vh;
@@ -489,7 +512,72 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
 }
 
 @media screen and (min-width: 576px) and (max-width: 900px) {
+  .userInfo {
+    display: none !important;
+  }
+  .nav-links {
+    overflow: hidden;
+  }
+  .nav-links ul {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+  }
+
+  .searchPage .row {
+    margin-top: 10px;
+  }
+
+  .searchPage .row svg {
+    display: block;
+    color: #ced4da;
+    font-size: 25px;
+    margin: 20px 0 0 20px;
+  }
+
+  #searchField {
+    height: 30px;
+    width: 50%;
+    padding: 20px;
+  }
+
+  .songSearch .row {
+    margin: 0;
+    padding: 0;
+  }
+
+  .songSearch {
+    padding-bottom: 20px;
+  }
+
+  .albumPage #content {
+    display: flex;
+    justify-content: center !important;
+  }
+
+  .albumPage #songs {
+    margin: 30px 0 0 0;
+    padding: 0 10px 0 10px;
+    height: unset;
+  }
   .albumPage {
-    background-color: red;
+    height: 90vh;
+    overflow-y: auto;
+    padding-bottom: 20px;
+  }
+
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px 0 10px;
+    height: 100px;
+    width: 100%;
+  }
+  .footer > div:last-child {
+    display: none !important;
   }
 }
