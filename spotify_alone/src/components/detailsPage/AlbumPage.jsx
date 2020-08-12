@@ -24,11 +24,11 @@ function AlbumPage(props) {
   return (
     <>
       {props.albumInfo && (
-        <Col className='albumPage' md={10}>
+        <Col className='albumPage' md={9} lg={10}>
           <Row className='row row-cols-xs-1'>
             <div
               id='content'
-              className='col-12 col-md-4 d-flex justify-content-end'
+              className='col-12 col-md-12 col-lg-4 d-flex justify-content-end'
             >
               <div id='artist' className='card mt-5'>
                 <Image
@@ -57,15 +57,18 @@ function AlbumPage(props) {
       )}
 
       {props.loading.albumInfo && (
-        <Col className='albumPage' style={{ height: "90vh" }} md={10}>
+        <Col className='albumPage' style={{ height: "90vh" }} md={9} lg={10}>
           <Row className='row row-cols-xs-1'>
             <Col
               id='content'
-              className='col-12 col-md-4 mt-5 d-flex justify-content-end'
+              className='col-12 col-md-12 col-lg-4 mt-5 pt-5 d-flex justify-content-end'
             >
               <Spinner animation='border' variant='light' />
             </Col>
-            <Col id='songs' className='col pt-5 d-flex justify-content-center'>
+            <Col
+              id='songs'
+              className='col pt-5  mt-5 d-flex justify-content-center'
+            >
               <Spinner animation='border' variant='light' />
             </Col>
           </Row>

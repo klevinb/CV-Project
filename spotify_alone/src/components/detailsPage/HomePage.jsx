@@ -10,7 +10,7 @@ const mapStateToProps = (state) => state;
 function HomePage(props) {
   const [selected, setSelected] = useState("TRENDING");
   return (
-    <Col className='homePage' md={10}>
+    <Col className='homePage' md={9} lg={10}>
       <div className='nav-links'>
         <ul>
           <li

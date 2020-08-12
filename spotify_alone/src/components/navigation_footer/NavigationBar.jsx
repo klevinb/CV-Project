@@ -18,7 +18,8 @@ function NavigationBar(props) {
     <>
       <Col
         className='nav-bar d-flex flex-column justify-content-between'
-        md={2}
+        md={3}
+        lg={2}
       >
         <div className='d-flex justify-content-center flex-column m-2 mt-3'>
           <Link to='/'>

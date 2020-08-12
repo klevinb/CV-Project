@@ -34,7 +34,7 @@ function SearchPage(props) {
   };
 
   return (
-    <Col className='searchPage' md={10}>
+    <Col className='searchPage' md={9} lg={10}>
       <Row>
         <Col
           className='d-flex justify-content-center align-items-center'
@@ -56,10 +56,15 @@ function SearchPage(props) {
             }}
           />
         </Col>
-        <Col className='songSearch d-flex flex-column' sm={12}>
+        <Col className='songSearch d-flex flex-column #' sm={12}>
           <Row className='row-cols-1 row-cols-md-3 row-cols-lg-4'>
             {searchResult.slice(0, limit).map((song, key) => (
-              <Col key={key} className='d-flex-justify-content-center' sm={12}>
+              <Col
+                key={key}
+                className='d-flex-justify-content-center'
+                sm={12}
+                md={6}
+              >
                 <Card>
                   <Card.Body>
                     <Card.Img

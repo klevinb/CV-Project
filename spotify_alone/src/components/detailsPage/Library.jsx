@@ -12,11 +12,11 @@ const mapDispatchToProps = (dispatch, props) => ({
 function Library(props) {
   return (
     <>
-      <Col className='albumPage' md={10}>
+      <Col className='albumPage' md={9} lg={10}>
         <Row className='row row-cols-xs-1'>
           <div
             id='content'
-            className='col-12 col-md-4 d-flex justify-content-end'
+            className='col-12 col-md-12 col-lg-4 d-flex justify-content-end'
           >
             <div className='card mt-5 mr-2 text-center'>
               <Image src='/likedSongs.png' style={{ height: "250px" }} />
@@ -43,11 +43,11 @@ function Library(props) {
       </Col>
 
       {false && (
-        <Col className='albumPage' md={10}>
+        <Col className='albumPage' md={9} lg={10}>
           <Row className='row row-cols-xs-1'>
             <Col
               id='content'
-              className='col-12 col-md-4 mt-5 d-flex justify-content-between'
+              className='col-12 col-md-12 col-lg-4 mt-5 pt-5 d-flex justify-content-between'
             >
               <Spinner animation='border' variant='light' />
             </Col>
