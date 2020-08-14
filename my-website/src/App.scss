@@ -1,0 +1,51 @@
+.container-fluid.night {
+  height: 100vh;
+  margin: 0;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.1)
+    ),
+    url("/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  font-family: "Source Code Pro", monospace;
+}
+
+.content.night {
+  color: whitesmoke;
+  padding: 10% 20% 0 20%;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.content.night {
+  p {
+    font-size: 1.5rem;
+  }
+  p span {
+    text-decoration: underline;
+  }
+}
+
+.content .nav-bar {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-bar li {
+  font-size: 1.2rem;
+  border-bottom: 2px solid whitesmoke;
+  letter-spacing: 0.2em;
+  margin: 0 0 20px 20px;
+}
+
+.nav-bar li:hover {
+  color: orange;
+  cursor: pointer;
+  border-bottom: 2px solid orange;
+}
