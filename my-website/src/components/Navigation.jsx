@@ -11,6 +11,9 @@ function Navigation({ navSelected, setSelectedNav }) {
           onClick={() => setSelectedNav("Education")}
         >
           Education
+          <br />
+          &<br />
+          Experience
         </li>
         <li
           className={navSelected === "Projects" ? "selected" : ""}
@@ -24,6 +27,11 @@ function Navigation({ navSelected, setSelectedNav }) {
         >
           Contacts
         </li>
+      </ul>
+      <ul className='socials'>
+        <li>GitHub</li>
+        <li>LinkedIn</li>
+        <li>Instagram</li>
       </ul>
     </>
   );
