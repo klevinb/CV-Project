@@ -1,11 +1,7 @@
 .container-fluid.night {
   height: 100vh;
   margin: 0;
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0.1)
-    ),
-    url("/background.jpg");
+  background-image: url("/background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
@@ -25,27 +21,45 @@
   }
   p span {
     text-decoration: underline;
+    cursor: pointer;
+    color: #ffa500;
   }
-}
+  p img {
+    border-radius: 25px;
+  }
+  .nav-bar {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .nav-bar li {
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    margin: 0 0 20px 20px;
+    text-decoration: underline;
+  }
 
-.content .nav-bar {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+  .nav-bar li:hover {
+    color: #ffa500;
+    cursor: pointer;
+  }
+  .selected {
+    color: #ffa500;
+    cursor: pointer;
+    text-decoration: overline !important;
+  }
 
-.nav-bar li {
-  font-size: 1.2rem;
-  border-bottom: 2px solid whitesmoke;
-  letter-spacing: 0.2em;
-  margin: 0 0 20px 20px;
-}
-
-.nav-bar li:hover {
-  color: orange;
-  cursor: pointer;
-  border-bottom: 2px solid orange;
+  .infoSection {
+    margin-top: 50px;
+  }
+  .logo_img {
+    position: absolute;
+    top: 0%;
+    left: 1%;
+    height: 100px;
+  }
 }
