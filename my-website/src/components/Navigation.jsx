@@ -12,7 +12,8 @@ function Navigation({ navSelected, setSelectedNav }) {
         >
           Education
           <br />
-          &<br />
+          <span>&amp;</span>
+          <br />
           Experience
         </li>
         <li
