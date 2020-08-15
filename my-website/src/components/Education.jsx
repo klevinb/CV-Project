@@ -15,7 +15,11 @@ function Education() {
       <div className='education'>
         <Row>
           <Col sm={12} md={4} lg={4}>
-            <a href='https://uniel.ems.al/' target='_blank'>
+            <a
+              href='https://uniel.ems.al/'
+              rel='noopener noreferrer'
+              target='_blank'
+            >
               <Image
                 fluid
                 src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Universiteti_i_Elbasanit_%22Aleksand%C3%ABr_Xhuvani%22.svg/1200px-Universiteti_i_Elbasanit_%22Aleksand%C3%ABr_Xhuvani%22.svg.png'
@@ -23,7 +27,7 @@ function Education() {
             </a>
           </Col>
           <Col sm={12} md={7} lg={7}>
-            <span>"Aleksander Xhuvani" University Elbasan, Albania</span>
+            <span>"Aleksander Xhuvani" University - Elbasan, Albania</span>
             <p className='titles'>Bachelor in IT</p>
             <div className='d-flex justify-content-between'>
               <div className='d-flex flex-column'>
@@ -41,7 +45,41 @@ function Education() {
       <div className='education'>
         <Row>
           <Col sm={12} md={4} lg={4}>
-            <a href='https://strive.school/' target='_blank'>
+            <a
+              href='https://www.furim.no/'
+              rel='noopener noreferrer'
+              target='_blank'
+            >
+              <Image
+                fluid
+                src='https://www.furim.no/wp-content/uploads/2018/09/farmto-table-2-2.jpg'
+              />
+            </a>
+          </Col>
+          <Col sm={12} md={7} lg={7}>
+            <span>FURIM Institutt - Oslo, Norway</span>
+            <p className='titles'>European Voluntary Service (EVS) Project</p>
+            <div className='d-flex justify-content-between'>
+              <div className='d-flex flex-column'>
+                <p>Starting date</p>
+                <p>02-11-2019</p>
+              </div>
+              <div className='d-flex flex-column'>
+                <p>Ending date</p>
+                <p>31-10-2020</p>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </div>
+      <div className='education'>
+        <Row>
+          <Col sm={12} md={4} lg={4}>
+            <a
+              href='https://strive.school/'
+              rel='noopener noreferrer'
+              target='_blank'
+            >
               <Image
                 fluid
                 src='https://scontent.fosl1-1.fna.fbcdn.net/v/t1.0-9/p960x960/106021628_677337352815317_3039720649727959783_o.png?_nc_cat=109&_nc_sid=85a577&_nc_ohc=w3yhnCIpp9gAX_hGExV&_nc_ht=scontent.fosl1-1.fna&oh=027868da31bf70c82b3f11ca505dfb57&oe=5F5DCFB1'
@@ -49,8 +87,8 @@ function Education() {
             </a>
           </Col>
           <Col sm={12} md={7} lg={7}>
-            <span>STRIVE School </span>
-            <p className='titles'>6 months coding course</p>
+            <span>STRIVE School - Berlin, Germany</span>
+            <p className='titles'>6 months online coding course</p>
             <div className='d-flex justify-content-between'>
               <div className='d-flex flex-column'>
                 <p>Starting date</p>

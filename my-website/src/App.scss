@@ -49,6 +49,10 @@
         transition: all 0.8s ease;
         -webkit-transition: all 0.8s ease;
       }
+      a {
+        text-decoration: none;
+        color: whitesmoke;
+      }
     }
 
     .nav-bar {
@@ -93,6 +97,10 @@
         background-color: white;
       }
       .education:nth-child(2) img {
+        background-color: white;
+        padding: 0;
+      }
+      .education:nth-child(3) img {
         background-color: #00ff84;
       }
     }
