@@ -146,4 +146,13 @@
       }
     }
   }
+  .dayToggle {
+    position: absolute;
+    bottom: 0%;
+    right: 1%;
+    cursor: pointer;
+    img {
+      height: 50px;
+    }
+  }
 }

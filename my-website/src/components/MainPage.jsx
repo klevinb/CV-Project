@@ -7,6 +7,7 @@ import Navigation from "./Navigation";
 const MainPage = (props) => {
   const [imgClicked, setImgClicked] = useState(false);
   const [navSelected, setSelectedNav] = useState("");
+  const [day, setDay] = useState(false);
 
   return (
     <>
@@ -33,6 +34,13 @@ const MainPage = (props) => {
 
             {navSelected === "Projects" && <Projects />}
           </div>
+        </div>
+        <div className='dayToggle'>
+          <Image
+            src={day ? "/switchOFF.png" : "/switchON.png"}
+            alt='toggle day/nigh'
+            onClick={() => setDay(!day)}
+          />
         </div>
       </Container>
     </>
