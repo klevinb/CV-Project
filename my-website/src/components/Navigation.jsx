@@ -30,9 +30,27 @@ function Navigation({ navSelected, setSelectedNav }) {
         </li>
       </ul>
       <ul className='socials'>
-        <li>GitHub</li>
-        <li>LinkedIn</li>
-        <li>Instagram</li>
+        <a
+          href='https://github.com/klevinb'
+          rel='noopener noreferrer'
+          target='_blank'
+        >
+          <li>GitHub</li>
+        </a>
+        <a
+          href='https://www.linkedin.com/in/klevinbazaiti/'
+          rel='noopener noreferrer'
+          target='_blank'
+        >
+          <li>LinkedIn</li>
+        </a>
+        <a
+          href='https://www.instagram.com/klevinb/'
+          rel='noopener noreferrer'
+          target='_blank'
+        >
+          <li>Instagram</li>
+        </a>
       </ul>
     </>
   );
