@@ -9,94 +9,133 @@
   font-family: "Source Code Pro", monospace;
   font-weight: 600;
   overflow: hidden;
-}
 
-.content.night {
-  ::-webkit-scrollbar {
+  .content.night::-webkit-scrollbar {
     display: none;
   }
-  color: whitesmoke;
-  padding: 10% 20% 0 20%;
-  max-height: 100%;
-  max-width: 100%;
-  overflow-y: auto;
-  p {
-    font-size: 1.5rem;
-  }
-  p span {
-    text-decoration: underline;
-    cursor: pointer;
-    color: #ffa500;
-  }
-  p img {
-    border-radius: 25px;
-  }
-  .socials {
-    position: absolute;
-    top: 0%;
-    right: 1%;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    li {
-      padding: 10px;
-      font-weight: 900;
-      font-size: 1.2rem;
-      cursor: pointer;
+  .content.night {
+    color: whitesmoke;
+    padding: 10% 20% 0 20%;
+    max-height: 100%;
+    max-width: 100%;
+    overflow-y: auto;
+    p {
+      font-size: 1rem;
     }
-    li:hover {
+    p span {
+      text-decoration: underline;
+      cursor: pointer;
       color: #ffa500;
     }
-  }
-
-  .nav-bar {
-    position: absolute;
-    top: 40%;
-    left: 0;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-  }
-  .nav-bar li {
-    font-size: 1.3rem;
-    font-weight: 900;
-    letter-spacing: 0.2em;
-    padding: 10px;
-    margin: 0 0 20px 20px;
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
-  .nav-bar li:hover {
-    color: #ffa500;
-  }
-  .selected {
-    color: #ffa500;
-    text-decoration: overline !important;
-  }
-
-  .infoSection {
-    margin-top: 50px;
-  }
-  .logo_img {
-    position: absolute;
-    top: 0%;
-    left: 1%;
-    height: 100px;
-  }
-
-  .education {
-    img {
-      background-color: white;
-      padding: 20px;
-      height: 250px;
-      border-radius: 20px;
+    p img {
+      border-radius: 25px;
     }
-    :last-child span {
-      font-size: 2rem;
-      font-weight: 600;
+    .socials {
+      position: absolute;
+      top: 0%;
+      right: 1%;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      li {
+        padding: 10px;
+        font-weight: 900;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      li:hover {
+        color: #ffa500;
+        transition: all 0.8s ease;
+        -webkit-transition: all 0.8s ease;
+      }
+    }
+
+    .nav-bar {
+      position: absolute;
+      top: 40%;
+      left: 0;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+    }
+    .nav-bar li {
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      padding: 10px;
+      margin: 0 0 20px 20px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .nav-bar li:hover {
+      color: #ffa500;
+      transition: all 1s ease;
+      -webkit-transition: all 1s ease;
+    }
+
+    .selected {
+      color: #ffa500;
+      text-decoration: overline !important;
+    }
+
+    .infoSection {
+      margin-top: 50px;
+      .education img {
+        padding: 20px;
+        height: 250px;
+        width: 250px;
+        border-radius: 20px;
+      }
+      .education:first-child img {
+        background-color: white;
+      }
+      .education:nth-child(2) img {
+        background-color: #00ff84;
+      }
+    }
+    .logo_img {
+      position: absolute;
+      top: 0%;
+      left: 1%;
+      height: 100px;
+    }
+
+    .education {
+      margin-bottom: 20px;
+      .row {
+        display: flex;
+        justify-content: space-around;
+      }
+      :last-child span {
+        font-size: 1.5rem;
+        font-weight: 400;
+      }
+      .titles {
+        padding-top: 10px;
+        font-weight: 600;
+        color: #ffa500;
+      }
+      .card {
+        background: transparent;
+        text-align: center;
+      }
+
+      .card-header button {
+        color: #ffa500;
+      }
+
+      .card-body {
+        padding: 0;
+        background: transparent;
+        display: flex;
+      }
+
+      .card-body .list-group * {
+        background: transparent;
+      }
     }
   }
 }
