@@ -36,8 +36,8 @@ function SingleProject(props) {
           </ul>
         </div>
         <Carousel>
-          {props.photos.map((photo) => (
-            <Carousel.Item>
+          {props.photos.map((photo, key) => (
+            <Carousel.Item key={key}>
               <img
                 className='d-block w-100'
                 src={
