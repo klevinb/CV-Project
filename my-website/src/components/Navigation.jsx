@@ -4,7 +4,7 @@ import { Image } from "react-bootstrap";
 function Navigation({ navSelected, setSelectedNav }) {
   return (
     <>
-      <Image className='logo_img' src='/logo_night.png' alt='logo' />
+      <Image className='logo_img' src='/assets/logo_night.png' alt='logo' />
       <ul className='nav-bar'>
         <li
           className={navSelected === "Education" ? "selected" : ""}

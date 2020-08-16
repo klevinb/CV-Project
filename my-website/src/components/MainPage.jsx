@@ -12,7 +12,7 @@ const MainPage = (props) => {
   return (
     <>
       <Container fluid className='night'>
-        <div className='content night'>
+        <div className='content'>
           <Navigation
             navSelected={navSelected}
             setSelectedNav={setSelectedNav}
@@ -22,7 +22,7 @@ const MainPage = (props) => {
             <span onClick={() => setImgClicked(!imgClicked)}>Klevin</span>.{" "}
             {imgClicked && (
               <>
-                <Image width='200px' height='200px' src='/klevin.png' />
+                <Image width='200px' height='200px' src='./assets/klevin.png' />
                 <br />
               </>
             )}
@@ -37,7 +37,7 @@ const MainPage = (props) => {
         </div>
         <div className='dayToggle'>
           <Image
-            src={day ? "/switchOFF.png" : "/switchON.png"}
+            src={day ? "/assets/switchOFF.png" : "/assets/switchON.png"}
             alt='toggle day/nigh'
             onClick={() => setDay(!day)}
           />

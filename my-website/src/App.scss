@@ -2,7 +2,7 @@
   height: 100vh;
   width: 100vw;
   margin: 0;
-  background-image: url("/background.jpg");
+  background-image: url("/assets/background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
@@ -10,10 +10,10 @@
   font-weight: 600;
   overflow: hidden;
 
-  .content.night::-webkit-scrollbar {
+  .content::-webkit-scrollbar {
     display: none;
   }
-  .content.night {
+  .content {
     color: whitesmoke;
     padding: 10% 20% 0 20%;
     max-height: 100%;
@@ -70,7 +70,6 @@
       letter-spacing: 0.2em;
       padding: 10px;
       margin: 0 0 20px 20px;
-      text-decoration: underline;
       cursor: pointer;
     }
 
@@ -82,7 +81,6 @@
 
     .selected {
       color: #ffa500;
-      text-decoration: overline !important;
     }
 
     .infoSection {
@@ -139,10 +137,12 @@
         padding: 0;
         background: transparent;
         display: flex;
+        border: 0;
       }
 
       .card-body .list-group * {
         background: transparent;
+        border: 0;
       }
     }
   }
@@ -153,6 +153,55 @@
     cursor: pointer;
     img {
       height: 50px;
+    }
+  }
+  .projects {
+    .projectDetails {
+      ul {
+        display: inline;
+        li {
+          padding: 0;
+        }
+      }
+      button {
+        background-color: transparent;
+        border: 0;
+        display: flex;
+        align-content: center;
+        svg {
+          font-size: 25px;
+          margin-right: 10px;
+        }
+        a {
+          text-decoration: none !important;
+        }
+      }
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      li {
+        padding: 20px;
+        cursor: pointer;
+      }
+    }
+
+    .carousel-item {
+      padding-bottom: 100px;
+    }
+
+    .carousel-caption {
+      bottom: 30px;
+    }
+
+    .carousel-indicators {
+      bottom: 10px !important;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      top: -20%;
     }
   }
 }
