@@ -56,8 +56,9 @@
       height: 30px;
     }
     input:focus {
-      border: 1px solid blue;
+      border: 1px solid rgb(91, 91, 255);
       border-radius: 2%;
+      box-shadow: none;
     }
     button {
       background: transparent;
@@ -66,12 +67,20 @@
       height: 30px;
       display: flex;
       align-items: center;
+
       svg {
         color: gray;
       }
     }
-    button:focus {
+
+    .btn-primary:focus {
       outline: none !important;
+      box-shadow: 0 0 0 0 !important;
+    }
+
+    button:active {
+      background-color: white !important;
+      border-color: lightgray !important;
     }
   }
 }
