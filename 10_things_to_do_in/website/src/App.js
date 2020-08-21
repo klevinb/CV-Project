@@ -1,24 +1,18 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import "./styles/App.scss";
-import { Nav, Footer } from "./components";
+import { Navigation, Footer, MainPage, TopCountries } from "./components";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-function App() {
+export default function App() {
   return (
-    <Container fluid className='mainPage'>
-      <Nav />
-      <div className='content'>
-        <h1>Get Information</h1>
-        <h3>Before You Travel</h3>
-        <span>
-          In this website you will find information about the country/city that
-          you would like to visit in the future.
-        </span>
-        <button>GET STARTED</button>
-      </div>
-      <Footer />
-    </Container>
+    <Router>
+      <Container fluid className='mainPage'>
+        <Navigation />
+        <Route path='/' exact component={MainPage} />
+        <Route path='/cities' component={TopCountries} />
+        <Footer />
+      </Container>
+    </Router>
   );
 }
-
-export default App;
