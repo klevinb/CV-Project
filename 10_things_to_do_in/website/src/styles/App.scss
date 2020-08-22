@@ -8,6 +8,10 @@ body {
   }
 }
 
+.mainPage::-webkit-scrollbar {
+  display: none;
+}
+
 .mainPage {
   background-image: url("/assets/background.png");
   background-repeat: no-repeat;
@@ -48,9 +52,12 @@ body {
     }
     button {
       margin: 50px;
-      padding: 25px;
+      padding: 15px;
       border-radius: 25px;
-      border: 0;
+      border: 1px solid rgb(255, 196, 0);
+      color: rgb(255, 196, 0);
+      font-size: 25px;
+      background: transparent;
       cursor: pointer;
     }
     button:focus {
@@ -59,10 +66,41 @@ body {
   }
 
   .nav-bar {
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
     width: 100%;
+
+    .search {
+      display: flex;
+      #searchField {
+        background: transparent;
+        border: 0;
+      }
+    }
+
+    .show {
+      width: 200px;
+      #searchField {
+        background: whitesmoke;
+        color: gray;
+      }
+      -webkit-transition: all 2s;
+      -moz-transition: all 2s;
+      transition: all 2s;
+    }
+    .hide {
+      width: 0px;
+      #searchField {
+        display: none;
+      }
+      -webkit-transition: all 2s;
+      -moz-transition: all 2s;
+      transition: all 2s;
+    }
     #logo {
       height: 80px;
       cursor: pointer;
@@ -73,8 +111,16 @@ body {
       font-size: 25px;
       display: flex;
       color: whitesmoke;
+
       li {
-        padding: 20px;
+        padding: 10px;
+        a {
+          color: whitesmoke;
+          text-decoration: none;
+        }
+        a:hover {
+          color: orange;
+        }
         cursor: pointer;
       }
       li:hover {
@@ -84,16 +130,94 @@ body {
   }
 
   .topcities {
+    padding-top: 50px;
+    padding-bottom: 50px;
     .card {
       margin-bottom: 10px;
       width: 20rem;
       height: auto;
       background: transparent;
       border: 0;
-      color: whitesmoke;
+      color: white;
       text-align: center;
+      .carousel-indicators {
+        display: none;
+      }
+      img {
+        height: 200px;
+        object-fit: cover;
+      }
+      p {
+        backdrop-filter: blur(2px);
+      }
+      button {
+        background: orange;
+        border: 0;
+        color: white;
+      }
+      .btn-primary:focus {
+        outline: none !important;
+        box-shadow: 0 0 0 0 !important;
+      }
+
+      button:active {
+        background-color: transparent !important;
+        border-color: lightgray !important;
+      }
+      button:hover {
+        text-decoration: underline;
+      }
     }
   }
+
+  .videoDetails {
+    margin-bottom: 50px;
+    .row {
+      height: 50%;
+    }
+    .videoDisplay {
+      padding-right: 0;
+    }
+    .videoDescription {
+      background-color: rgb(255, 248, 248);
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      padding: 20px;
+
+      h4 {
+        margin-bottom: 20px;
+      }
+      p {
+        font-family: "Courier New", Courier, monospace;
+      }
+    }
+    .videoList {
+      .card {
+        border: 0;
+        background-color: rgb(255, 248, 248);
+        margin: 10px;
+        width: 100%;
+        height: 350px;
+        margin-top: 30px;
+        .card-body {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        img {
+          cursor: pointer;
+        }
+        span {
+          font-size: 15px;
+        }
+        p {
+          color: gray;
+          font-family: "Courier New", Courier, monospace;
+        }
+      }
+    }
+  }
+
   #klevinb {
     position: absolute;
     width: 100%;

@@ -4,38 +4,44 @@
     "images": [
       "/assets/places/paris/paris.jpg",
       "/assets/places/paris/paris1.jpg"
-    ]
+    ],
+    "info": "Paris (nicknamed the 'City of light') is the capital city of France, and the largest city in France. ... Paris is also the center of French economy, politics, traffic and culture. Paris has many art museums and historical buildings. As a traffic center, Paris has a very good underground subway system (called the Metro)"
   },
   {
     "name": "Oslo",
-    "images": ["/assets/places/oslo/oslo.jpg", "/assets/places/oslo/oslo1.jpg"]
+    "images": ["/assets/places/oslo/oslo.jpg", "/assets/places/oslo/oslo1.jpg"],
+    "info": "Oslo is the capital and largest city in Norway. Oslo was established as a municipality in 1838, but the city was founded around 1048 by King Harald III 'Hardraade' of Norway. The city was largely destroyed by a fire in 1624, and rebuilt as Christiania (briefly also spelt Kristiania)."
   },
   {
     "name": "New York",
     "images": [
       "/assets/places/newyork/newyork.jpg",
       "/assets/places/newyork/newyork1.jpg"
-    ]
+    ],
+    "info": "New York City is frequently shortened to simply 'New York', 'NY', or 'NYC'. New York City is also known as 'The City' in some parts of the Eastern United States, in particular New York State and surrounding U.S. states."
   },
   {
     "name": "Milano",
     "images": [
       "/assets/places/milano/milano.jpg",
       "/assets/places/milano/milano1.jpg"
-    ]
+    ],
+    "info": "Milan is a city in northern Italy, capital of Lombardy, and the second-most populous city in Italy ... has been overshadowed by a great expansion of publishing, finance, banking, fashion design, information technology, logistics and tourism."
   },
   {
     "name": "London",
     "images": [
       "/assets/places/london/london.jpg",
       "/assets/places/london/london1.jpg"
-    ]
+    ],
+    "info": "London is the capital and largest city of England and the United Kingdom, and is the largest urban area in Greater London. The River Thames travels through the city. London is the biggest city in western Europe, and the world's largest financial centre. London is about 2000 years old."
   },
   {
     "name": "Istanbul",
     "images": [
       "/assets/places/istanbul/istanbul.jpg",
       "/assets/places/istanbul/istanbul1.jpg"
-    ]
+    ],
+    "info": "Istanbul is a transcontinental city in Eurasia, straddling the Bosporus strait (which separates Europe and Asia) between the Sea of Marmara and the Black Sea. Its commercial and historical center lies on the European side and about a third of its population lives in suburbs on the Asian side of the Bosporus."
   }
 ]
