@@ -1,20 +1,30 @@
 import React from "react";
-import { Container, Carousel } from "react-bootstrap";
+import { Carousel, Row, Col } from "react-bootstrap";
 import menu from "../data/menu.json";
 
-export default function MainPage() {
+export default function MainPage({ history }) {
   return (
     <>
       <div className='mainPage'>
-        <Container>
-          <div>
+        <Row>
+          <Col className='headings' sm={12} md={6} lg={8}>
             <h3>HAVE YOU TRIED OUR PASTAS YET? VISIT US TODAY!</h3>
             <div className='mainButtons'>
               <button>RESERVE TABLE</button>
-              <button href='#menu'>BROWSE MENU</button>
+              <button onClick={() => history.push("/menu")}>BROWSE MENU</button>
             </div>
-          </div>
-        </Container>
+          </Col>
+
+          <Col sm={12} md={6} lg={4} className='dishes'>
+            <Carousel pause='hover'>
+              {menu.map((dish) => (
+                <Carousel.Item>
+                  <img className='d-block' src={dish.image} alt='First slide' />
+                </Carousel.Item>
+              ))}
+            </Carousel>
+          </Col>
+        </Row>
       </div>
     </>
   );

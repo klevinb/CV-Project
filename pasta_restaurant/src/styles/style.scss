@@ -1,6 +1,8 @@
 body {
   margin: 0;
   background-image: url("/background.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
   backdrop-filter: blur(2px);
 }
 .App {
@@ -15,40 +17,23 @@ body {
     justify-content: space-between;
     align-items: center;
     img {
-      height: 200px;
+      height: 150px;
       padding: 25px;
       cursor: pointer;
-    }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      margin-right: 100px;
-      height: 100%;
-      li {
-        font-size: 1rem;
-        color: whitesmoke;
-        font-size: 25px;
-        cursor: pointer;
-        font-family: "Cormorant Upright", serif;
-        padding-right: 25px;
-      }
-      li:hover {
-        text-decoration: underline;
-      }
     }
   }
   .mainPage {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    height: auto;
-    height: 50%;
+    height: 60%;
+    padding: 20px 50px 0px 50px;
     h3 {
       color: whitesmoke;
       font-family: "Montserrat", sans-serif;
       letter-spacing: 2px;
       font-size: 45px;
-      width: 60%;
+      max-width: 80%;
     }
     .container {
       display: flex;
@@ -56,6 +41,14 @@ body {
       padding: 0;
       margin: 0;
       width: 100%;
+    }
+    .headings {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    .carousel-item {
+      transition: transform 3s ease-in-out;
     }
 
     .mainButtons {
@@ -88,10 +81,125 @@ body {
     }
   }
   .dishes {
-    display: flex;
-    justify-content: center;
-    color: whitesmoke;
-    margin-top: 100px;
-    height: 50%;
+    width: 50%;
+    img {
+      width: 100%;
+      height: 300px;
+      border-radius: 20px;
+    }
+
+    .carousel {
+      cursor: pointer;
+    }
+
+    .carousel-inner {
+      border-radius: 20px;
+    }
+
+    .carousel-control-next,
+    .carousel-control-prev {
+      display: none;
+    }
+    .carousel-indicators {
+      bottom: -20px;
+
+      li {
+        background-color: orange;
+        height: 5px;
+      }
+    }
+  }
+  .menuPage {
+    padding-top: 50px;
+    padding-left: 150px;
+    padding-right: 150px;
+    overflow: hidden;
+    img {
+      height: 400px;
+    }
+    .carousel-control-next,
+    .carousel-control-prev {
+      width: 3%;
+    }
+    .carousel {
+      width: 100%;
+      cursor: pointer;
+    }
+    .carousel-caption {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      position: unset;
+      right: unset;
+      bottom: unset;
+      left: unset;
+      z-index: unset;
+      padding-top: unset;
+      padding-bottom: unset;
+      color: #fff;
+      text-align: unset;
+    }
+    .carousel-inner {
+      overflow: unset;
+    }
+    .carousel-indicators {
+      bottom: -60px;
+    }
+    .carousel-item {
+      transition: transform 2s ease-in-out;
+    }
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+      height: 45px;
+      width: 45px;
+    }
+    .dishDetails {
+      padding: 35px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      p {
+        max-width: 350px;
+      }
+      span {
+        color: whitesmoke;
+      }
+      .ratings {
+        color: whitesmoke;
+        display: flex;
+        width: auto;
+        white-space: nowrap;
+        overflow-x: auto;
+        text-align: center;
+        .rating {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: start;
+          padding: 30px;
+          p {
+            max-width: unset;
+          }
+          .widget-svg {
+            height: 10px !important;
+            width: 10px !important;
+          }
+        }
+      }
+      .ratings::-webkit-scrollbar {
+        width: 1em;
+      }
+
+      .ratings::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      }
+
+      .ratings::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+      }
+    }
   }
 }
