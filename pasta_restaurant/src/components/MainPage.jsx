@@ -10,7 +10,9 @@ export default function MainPage({ history }) {
           <Col className='headings' sm={12} md={6} lg={8}>
             <h3>HAVE YOU TRIED OUR PASTAS YET? VISIT US TODAY!</h3>
             <div className='mainButtons'>
-              <button>RESERVE TABLE</button>
+              <button onClick={() => history.push("/reservation")}>
+                RESERVE TABLE
+              </button>
               <button onClick={() => history.push("/menu")}>BROWSE MENU</button>
             </div>
           </Col>
