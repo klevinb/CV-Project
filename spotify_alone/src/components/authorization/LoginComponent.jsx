@@ -1,8 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Image, Button, FormControl, Form } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
+import axios from "axios";
+import { connect } from "react-redux";
+
+const mapDispatchToProps = (dispatch, props) => ({
+  getUser: (user) => dispatch({ type: "ADD_USER", payload: user }),
+});
 
 function LoginComponent(props) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const login = async () => {
+    const res = await axios(`${process.env.REACT_APP_API_URL}/users/login`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      data: {
+        username,
+        password,
+      },
+      withCredentials: true,
+    });
+
+    if (res.status === 200) {
+      console.log("here");
+      const res = await axios(`${process.env.REACT_APP_API_URL}/users/me`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      });
+
+      console.log(res.data);
+      props.getUser(res.data);
+      if (res.status === 200) {
+        props.history.push("/");
+      }
+    }
+
+    if (!res.isOk) {
+      // display an error
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    login();
+  };
   return (
     <>
       <Container fluid className='loginPage'>
@@ -37,11 +84,13 @@ function LoginComponent(props) {
             <hr />
           </div>
 
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group controlId='formBasicEmail'>
               <FormControl
-                type='email'
+                type='text'
                 placeholder='Email address or username'
+                value={username}
+                onChange={(e) => setUsername(e.currentTarget.value)}
                 className='mr-sm-2'
               />
             </Form.Group>
@@ -50,6 +99,8 @@ function LoginComponent(props) {
               <FormControl
                 type='password'
                 placeholder='Password'
+                value={password}
+                onChange={(e) => setPassword(e.currentTarget.value)}
                 className='mr-sm-2'
               />
             </Form.Group>
@@ -87,4 +138,4 @@ function LoginComponent(props) {
   );
 }
 
-export default withRouter(LoginComponent);
+export default connect(null, mapDispatchToProps)(withRouter(LoginComponent));

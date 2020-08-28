@@ -79,6 +79,12 @@ export default function (state = {}, action) {
         albumInfo: null,
         artistInfo: null,
       };
+    case "ADD_USER":
+      return {
+        ...state,
+        user: action.payload,
+        loggedin: true,
+      };
 
     default:
       return state;

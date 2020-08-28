@@ -17,7 +17,8 @@ const initialStore = {
   selectedSong: null,
   playing: false,
   likedSongs: [],
-  loggedin: true,
+  user: null,
+  loggedin: false,
 };
 
 export default function configureStore() {
