@@ -88,9 +88,7 @@ function NavigationBar(props) {
                   />
                 </Col>
                 <Col md={9}>
-                  <span>
-                    {props.user && props.user.name + " " + props.user.surname}
-                  </span>
+                  <span>{props.user && props.user.profileName}</span>
                 </Col>
               </Row>
             </>

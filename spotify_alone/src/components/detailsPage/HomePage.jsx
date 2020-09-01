@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCookies } from "react";
 import { Col, Container } from "react-bootstrap";
 import "../../styles/home.css";
 import ArtistAlbumComponent from "./ArtistAlbumComponent";

@@ -109,3 +109,15 @@
 .signupContent input {
   font-size: 12px;
 }
+
+.errorMessage {
+  color: red;
+  font-size: 13px;
+}
+
+#formBasicEmail:focus + .errorMessage,
+#formBasicEmailCheck:focus + .errorMessage,
+#formBasicPassword:focus + .errorMessage,
+#birthDay:focus + .errorMessage {
+  display: none;
+}

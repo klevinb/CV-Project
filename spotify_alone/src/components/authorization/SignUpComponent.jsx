@@ -1,8 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Image, Button, FormControl, Form } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
+import axios from "axios";
 
-function SignUpComponent({ handleOptionChange, selectedOption, ...props }) {
+function SignUpComponent(props) {
+  const [email, setEmail] = useState("");
+  const [confirmEmail, setconfirmEmail] = useState("");
+  const [password, setpassword] = useState("");
+  const [profileName, setprofileName] = useState("");
+  const [birthday, setbirthday] = useState("");
+  const [gender, setgender] = useState("");
+
+  const validateEmail = (email) => {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const validatePass = (pass) => {
+    const re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    return re.test(String(pass));
+  };
+
+  const signUp = async () => {
+    const resp = await axios(
+      `${process.env.REACT_APP_API_URL}/users/register`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: {
+          profileName,
+          email,
+          password,
+          birthday,
+          gender,
+        },
+        method: "POST",
+      }
+    );
+    if (resp.status === 201) props.history.push("/login");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    signUp();
+  };
+
   return (
     <>
       <Container fluid className='signupPage'>
@@ -27,14 +70,20 @@ function SignUpComponent({ handleOptionChange, selectedOption, ...props }) {
             <hr />
           </div>
           <span>Sign up with your email address</span>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group controlId='formBasicEmail'>
               <Form.Label>What's your email</Form.Label>
               <FormControl
                 type='email'
                 placeholder='Enter your email.'
                 className='mr-sm-2'
+                value={email}
+                onChange={(e) => setEmail(e.currentTarget.value)}
+                required
               />
+              {email && !validateEmail(email) && (
+                <div className='errorMessage'>Email is not valid</div>
+              )}
             </Form.Group>
             <Form.Group controlId='formBasicEmailCheck'>
               <Form.Label>Confirm your email</Form.Label>
@@ -42,7 +91,13 @@ function SignUpComponent({ handleOptionChange, selectedOption, ...props }) {
                 type='email'
                 placeholder='Enter your email again.'
                 className='mr-sm-2'
+                value={confirmEmail}
+                onChange={(e) => setconfirmEmail(e.currentTarget.value)}
+                required
               />
+              {confirmEmail && !(email === confirmEmail) && (
+                <div className='errorMessage'>Emails should be identic</div>
+              )}
             </Form.Group>
             <Form.Group controlId='formBasicPassword'>
               <Form.Label>Create a password</Form.Label>
@@ -50,7 +105,15 @@ function SignUpComponent({ handleOptionChange, selectedOption, ...props }) {
                 type='password'
                 placeholder='Create a password.'
                 className='mr-sm-2'
+                value={password}
+                onChange={(e) => setpassword(e.currentTarget.value)}
+                required
               />
+              {password && !validatePass(password) && (
+                <div className='errorMessage'>
+                  Should contain at least 8 chars, 1 digit, 1 letter
+                </div>
+              )}
             </Form.Group>
             <Form.Group controlId='formBasicName'>
               <Form.Label>What should we call you?</Form.Label>
@@ -58,6 +121,9 @@ function SignUpComponent({ handleOptionChange, selectedOption, ...props }) {
                 type='text'
                 placeholder='Enter a profile name.'
                 className='mr-sm-2'
+                value={profileName}
+                onChange={(e) => setprofileName(e.currentTarget.value)}
+                required
               />
               <Form.Text className='text-muted'>
                 This appears on your profile.
@@ -65,7 +131,12 @@ function SignUpComponent({ handleOptionChange, selectedOption, ...props }) {
             </Form.Group>
             <Form.Group controlId='formBasicDate'>
               <Form.Label>What's your date of birth?</Form.Label>
-              <FormControl type='date' className='mr-sm-2' />
+              <FormControl
+                type='date'
+                className='mr-sm-2'
+                onChange={(e) => setbirthday(e.currentTarget.value)}
+                required
+              />
             </Form.Group>
             <Form.Group controlId='formBasicDate'>
               <Form.Label>What's your gender?</Form.Label>
@@ -74,9 +145,9 @@ function SignUpComponent({ handleOptionChange, selectedOption, ...props }) {
                   <label>
                     <input
                       type='radio'
-                      value='male'
-                      checked={selectedOption === "male"}
-                      onChange={(e) => handleOptionChange(e)}
+                      value='M'
+                      checked={gender === "M"}
+                      onChange={(e) => setgender(e.target.value)}
                     />
                     Male
                   </label>
@@ -85,9 +156,9 @@ function SignUpComponent({ handleOptionChange, selectedOption, ...props }) {
                   <label>
                     <input
                       type='radio'
-                      value='female'
-                      checked={selectedOption === "female"}
-                      onChange={(e) => handleOptionChange(e)}
+                      value='F'
+                      checked={gender === "F"}
+                      onChange={(e) => setgender(e.target.value)}
                     />
                     Female
                   </label>
@@ -97,8 +168,8 @@ function SignUpComponent({ handleOptionChange, selectedOption, ...props }) {
                     <input
                       type='radio'
                       value='non-binary'
-                      checked={selectedOption === "non-binary"}
-                      onChange={(e) => handleOptionChange(e)}
+                      checked={gender === "non-binary"}
+                      onChange={(e) => setgender(e.target.value)}
                     />
                     Non-binary
                   </label>
@@ -123,7 +194,9 @@ function SignUpComponent({ handleOptionChange, selectedOption, ...props }) {
                 protects your personal data please read Spotify's
                 <span> Privacy Policy</span>.
               </span>
-              <Button id='registerButton'>SIGN UP</Button>
+              <Button id='registerButton' type='submit'>
+                SIGN UP
+              </Button>
               <div className='d-flex justify-content-center'>
                 <span>
                   Have an account?{" "}

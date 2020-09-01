@@ -1,5 +1,4 @@
-import axios from "axios";
-import Cookies from "js-cookie";
+import authAxios from "../components/authorization/http";
 
 export const fetchArtistsWithThunk = () => {
   let albums = [];
@@ -62,14 +61,11 @@ export const fetchArtistsWithThunk = () => {
 
 export const fetchAlbumInfos = (id) => {
   return (dispatch, getState) => {
-    fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + id, {
+    authAxios("/deezer/albumInfo/" + id, {
       method: "GET",
-      headers: {
-        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-        "x-rapidapi-key": "b0688e745dmsh41b788a14af44c3p1bd80cjsn95f97f3e6443",
-      },
+      withCredentials: true,
     })
-      .then((res) => res.json())
+      .then((resp) => resp.data)
       .then((respObj) =>
         dispatch({
           type: "FETCH_ALBUM_INFO",
@@ -106,7 +102,7 @@ export const selectSongFromSearch = (song) => {
 
 export const fetchArtistInfos = (id) => {
   return (dispatch, getState) => {
-    axios(process.env.REACT_APP_API_URL + "/deezer/artitisInfo/" + id, {
+    authAxios("/deezer/artitisInfo/" + id, {
       method: "GET",
       withCredentials: true,
     }).then((data) =>

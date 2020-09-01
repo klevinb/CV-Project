@@ -63,10 +63,13 @@ export default function (state = {}, action) {
     case "LIKE_SONG":
       return {
         ...state,
-        likedSongs:
-          state.likedSongs.indexOf(action.payload) !== -1
-            ? [...state.likedSongs.filter((like) => like !== action.payload)]
-            : [...state.likedSongs, action.payload],
+        user: {
+          ...state.user,
+          likedSongs:
+            state.user.likedSongs.indexOf(action.payload) !== -1
+              ? [...state.likedSongs.filter((like) => like !== action.payload)]
+              : [...state.likedSongs, action.payload],
+        },
       };
     case "CLEAR_STATE":
       return {

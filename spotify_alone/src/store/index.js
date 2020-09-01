@@ -16,7 +16,6 @@ const initialStore = {
   tracksList: null,
   selectedSong: null,
   playing: false,
-  likedSongs: [],
   user: null,
   loggedin: false,
 };

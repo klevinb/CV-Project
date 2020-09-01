@@ -5,11 +5,11 @@ import axios from "axios";
 import { connect } from "react-redux";
 
 const mapDispatchToProps = (dispatch, props) => ({
-  getUser: (user) => dispatch({ type: "ADD_USER", payload: user }),
+  setUser: (user) => dispatch({ type: "ADD_USER", payload: user }),
 });
 
 function LoginComponent(props) {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const login = async () => {
@@ -19,7 +19,7 @@ function LoginComponent(props) {
       },
       method: "POST",
       data: {
-        username,
+        email,
         password,
       },
       withCredentials: true,
@@ -35,7 +35,7 @@ function LoginComponent(props) {
       });
 
       console.log(res.data);
-      props.getUser(res.data);
+      props.setUser(res.data);
       if (res.status === 200) {
         props.history.push("/");
       }
@@ -88,9 +88,9 @@ function LoginComponent(props) {
             <Form.Group controlId='formBasicEmail'>
               <FormControl
                 type='text'
-                placeholder='Email address or username'
-                value={username}
-                onChange={(e) => setUsername(e.currentTarget.value)}
+                placeholder='Email address'
+                value={email}
+                onChange={(e) => setEmail(e.currentTarget.value)}
                 className='mr-sm-2'
               />
             </Form.Group>
