@@ -1,6 +1,6 @@
-import { createStore, compose, applyMiddleware } from "redux";
-import mainReducer from "../reducers";
-import thunk from "redux-thunk";
+import { createStore, compose, applyMiddleware } from 'redux';
+import mainReducer from '../reducers';
+import thunk from 'redux-thunk';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -17,7 +17,7 @@ const initialStore = {
   selectedSong: null,
   playing: false,
   user: null,
-  loggedin: false,
+  loggedin: true,
 };
 
 export default function configureStore() {
