@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { Col, Row, Image, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { AiOutlineHome, AiFillHome } from "react-icons/ai";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { FiSearch } from "react-icons/fi";
-import { GiBookshelf } from "react-icons/gi";
-import { RiDownloadLine } from "react-icons/ri";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
+import React, { useState } from 'react';
+import { Col, Row, Image, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { AiOutlineHome, AiFillHome } from 'react-icons/ai';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { FiSearch } from 'react-icons/fi';
+import { GiBookshelf } from 'react-icons/gi';
+import { RiDownloadLine } from 'react-icons/ri';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => state;
 
 function NavigationBar(props) {
-  const [selected, setSelected] = useState("Home");
+  const [selected, setSelected] = useState('Home');
   const [show, setShow] = useState(true);
   return (
     <>
@@ -30,23 +30,23 @@ function NavigationBar(props) {
             id='burgerIcon'
           />
 
-          <ul className={show ? "mt-3 show" : "mt-3"}>
+          <ul className={show ? 'mt-3 show' : 'mt-3'}>
             <li>
               <Link
                 onClick={() => {
-                  setSelected("Home");
+                  setSelected('Home');
                   setShow(show ? false : true);
                 }}
                 to='/'
               >
-                {selected === "Home" ? <AiFillHome /> : <AiOutlineHome />}
+                {selected === 'Home' ? <AiFillHome /> : <AiOutlineHome />}
                 Home
               </Link>
             </li>
             <li>
               <Link
                 onClick={() => {
-                  setSelected("Search");
+                  setSelected('Search');
                   setShow(show ? false : true);
                 }}
                 to='/search'
@@ -57,7 +57,7 @@ function NavigationBar(props) {
             </li>
             <li
               onClick={() => {
-                setSelected("Your Library");
+                setSelected('Your Library');
                 setShow(show ? false : true);
               }}
             >
@@ -65,6 +65,22 @@ function NavigationBar(props) {
                 <GiBookshelf />
                 Your Library
               </Link>
+            </li>
+            <li className='loginLinks'>
+              <Button
+                className='buttons'
+                onClick={() => props.history.push('/login?signup')}
+              >
+                SIGN UP
+              </Button>
+            </li>
+            <li className='loginLinks'>
+              <Button
+                className='buttons'
+                onClick={() => props.history.push('/login')}
+              >
+                LOG IN
+              </Button>
             </li>
           </ul>
         </div>
@@ -96,13 +112,13 @@ function NavigationBar(props) {
             <>
               <Button
                 className='buttons'
-                onClick={() => props.history.push("/login?signup")}
+                onClick={() => props.history.push('/login?signup')}
               >
                 SIGN UP
               </Button>
               <Button
                 className='buttons'
-                onClick={() => props.history.push("/login")}
+                onClick={() => props.history.push('/login')}
               >
                 LOG IN
               </Button>
