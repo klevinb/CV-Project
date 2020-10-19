@@ -1,6 +1,6 @@
 export default function (state = {}, action) {
   switch (action.type) {
-    case "FETCH_ARTISTS":
+    case 'FETCH_ARTISTS':
       return {
         ...state,
         albums: action.payload,
@@ -9,7 +9,7 @@ export default function (state = {}, action) {
           albums: false,
         },
       };
-    case "FETCH_ALBUM_INFO":
+    case 'FETCH_ALBUM_INFO':
       return {
         ...state,
         albumInfo: {
@@ -21,7 +21,7 @@ export default function (state = {}, action) {
           albumInfo: false,
         },
       };
-    case "FETCH_ARTIST":
+    case 'FETCH_ARTIST':
       return {
         ...state,
         loading: {
@@ -31,7 +31,7 @@ export default function (state = {}, action) {
         artistInfo: action.payload,
         tracksList: action.payload.topSongs.data,
       };
-    case "SELECT_SONG":
+    case 'SELECT_SONG':
       return {
         ...state,
         selectedSong: state.tracksList.find(
@@ -39,14 +39,14 @@ export default function (state = {}, action) {
         ),
         playing: true,
       };
-    case "PLAY_PREVIEW":
+    case 'PLAY_PREVIEW':
       return {
         ...state,
         tracksList: null,
         selectedSong: action.payload,
         playing: true,
       };
-    case "PLAY_LIKEDSONG":
+    case 'PLAY_LIKEDSONG':
       return {
         ...state,
         tracksList: null,
@@ -55,23 +55,27 @@ export default function (state = {}, action) {
         ),
         playing: true,
       };
-    case "TOGGLE_PLAY":
+    case 'TOGGLE_PLAY':
       return {
         ...state,
         playing: !state.playing,
       };
-    case "LIKE_SONG":
+    case 'LIKE_SONG':
       return {
         ...state,
         user: {
           ...state.user,
           likedSongs:
             state.user.likedSongs.indexOf(action.payload) !== -1
-              ? [...state.likedSongs.filter((like) => like !== action.payload)]
-              : [...state.likedSongs, action.payload],
+              ? [
+                  ...state.user.likedSongs.filter(
+                    (like) => like !== action.payload
+                  ),
+                ]
+              : [...state.user.likedSongs, action.payload],
         },
       };
-    case "CLEAR_STATE":
+    case 'CLEAR_STATE':
       return {
         ...state,
         loading: {
@@ -82,7 +86,7 @@ export default function (state = {}, action) {
         albumInfo: null,
         artistInfo: null,
       };
-    case "ADD_USER":
+    case 'ADD_USER':
       return {
         ...state,
         user: action.payload,
