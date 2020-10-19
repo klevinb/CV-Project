@@ -66,7 +66,7 @@ function NavigationBar(props) {
                 Your Library
               </Link>
             </li>
-            <li className='loginLinks'>
+            {/* <li className='loginLinks'>
               <Button
                 className='buttons'
                 onClick={() => props.history.push('/login?signup')}
@@ -81,7 +81,7 @@ function NavigationBar(props) {
               >
                 LOG IN
               </Button>
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className='d-flex flex-column m-2 userInfo'>
