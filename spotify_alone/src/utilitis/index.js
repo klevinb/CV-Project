@@ -78,26 +78,18 @@ export const fetchAlbumInfos = (id) => {
 
 export const selectSongThunk = (id) => {
   return (dispatch, getState) => {
-    if (getState().loggedin === true) {
-      dispatch({
-        type: 'SELECT_SONG',
-        payload: id,
-      });
-    } else {
-      alert('You need to log in');
-    }
+    dispatch({
+      type: 'SELECT_SONG',
+      payload: id,
+    });
   };
 };
 export const selectSongFromSearch = (song) => {
   return (dispatch, getState) => {
-    if (getState().loggedin === true) {
-      dispatch({
-        type: 'PLAY_PREVIEW',
-        payload: song,
-      });
-    } else {
-      alert('You need to log in');
-    }
+    dispatch({
+      type: 'PLAY_PREVIEW',
+      payload: song,
+    });
   };
 };
 
